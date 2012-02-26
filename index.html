@@ -1,88 +1,90 @@
-<!DOCTYPE html>
 <html>
-<head>
-  <meta charset='utf-8'>
+	<head>
+		<title>toc</title>
+    <link href='http://fonts.googleapis.com/css?family=Voces' rel='stylesheet' type='text/css'>
+		<link type="text/css" rel="stylesheet" href="dist/site.css"/>
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-24017782-2']);
+			_gaq.push(['_trackPageview']);
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	</head>
+	<body>
+    <div id="toc"></div>
+		<a href="http://github.com/jgallen23/toc"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/7afbc8b248c68eb468279e8c17986ad46549fb71/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub"></a>
+		<div id="wrapper">
+<h1>TOC</h1>
+<p>TOC is a jQuery plugin that will automatically generate a table of contents for your page.  You can see an example of it on the left side of the page.
 
-  <title>jgallen23/toc @ GitHub</title>
+</p>
+<h2>Features</h2>
+<ul>
+<li>Completely customizable</li>
+<li>Click to smooth scroll to that spot on the page</li>
+<li>Automatically highlight the current section</li>
+<li>Extremely lightweight (744 bytes gzipped)</li>
+<li>Can have multiple on a page</li>
+</ul>
+<h2>Installation</h2>
+<p>Download <a href="">here</a>
 
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      background-color: #c803af;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #ffffff;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #37fc50; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #37fc50; }
-    h3 { text-align: center; color: #37fc50; }
-    a { color: #37fc50; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-  </style>
-</head>
+</p>
+<h2>Usage</h2>
+<pre><code>$(<span class="string">'#toc'</span>).toc();</code></pre>
+<h3>Options</h3>
+<p>Defaults shown below
 
-<body>
-  <a href="https://github.com/jgallen23/toc"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+</p>
+<pre><code>$(<span class="string">'#toc'</span>).toc({
+    <span class="string">'selectors'</span>: <span class="string">'h1,h2,h3'</span>, <span class="comment">//elements to use as headings</span>
+    <span class="string">'container'</span>: <span class="string">'body'</span>, <span class="comment">//element to find all selectors in</span>
+    <span class="string">'smoothScrolling'</span>: <span class="literal">true</span>, <span class="comment">//enable or disable smooth scrolling on click</span>
+    <span class="string">'prefix'</span>: <span class="string">'toc'</span>, <span class="comment">//prefix for anchor tags and class names</span>
+    <span class="string">'highlightOnScroll'</span>: <span class="literal">true</span>, <span class="comment">//add class to heading that is currently in focus</span>
+    <span class="string">'highlightOffset'</span>: <span class="number">100</span> <span class="comment">//offset to trigger the next headline</span>
+});</code></pre>
+<h2>Example CSS</h2>
+<pre><code><span class="id">#toc</span> <span class="rules">{
+    <span class="rule"><span class="attribute">top</span>:<span class="value"> <span class="number">0</span>px</span>;</span>
+    <span class="rule"><span class="attribute">left</span>:<span class="value"> <span class="number">0</span>px</span>;</span>
+    <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">100</span>%</span>;</span>
+    <span class="rule"><span class="attribute">position</span>:<span class="value"> fixed</span>;</span>
+    <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="number">#000</span></span>;</span>
+    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">150</span>px</span>;</span>
+    <span class="rule"><span class="attribute">padding-top</span>:<span class="value"> <span class="number">20</span>px</span>;</span>
+    <span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#fff</span></span>;</span>
+<span class="rule">}</span></span>
 
-  <div id="container">
+<span class="id">#toc</span> <span class="tag">ul</span> <span class="rules">{
+    <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span></span>;</span>
+    <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">0</span></span>;</span>
+    <span class="rule"><span class="attribute">list-style</span>:<span class="value"> none</span>;</span>
+<span class="rule">}</span></span>
 
-    <div class="download">
-      <a href="https://github.com/jgallen23/toc/zipball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/zip.png"></a>
-      <a href="https://github.com/jgallen23/toc/tarball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/tar.png"></a>
-    </div>
+<span class="id">#toc</span> <span class="tag">li</span> <span class="rules">{
+    <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">5</span>px <span class="number">10</span>px</span>;</span>
+<span class="rule">}</span></span>
 
-    <h1><a href="https://github.com/jgallen23/toc">toc</a>
-      <span class="small">by <a href="https://github.com/jgallen23">jgallen23</a></span></h1>
+<span class="id">#toc</span> <span class="tag">a</span> <span class="rules">{
+    <span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#fff</span></span>;</span>
+    <span class="rule"><span class="attribute">text-decoration</span>:<span class="value"> none</span>;</span>
+<span class="rule">}</span></span>
 
-    <div class="description">
-      jQuery Table of Contents Plugin
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-      <h2>Authors</h2>
-      <p>Greg Allen (me@jga.me)<br/>      </p>
-    
-
-    
-      <h2>Contact</h2>
-      <p>Greg (mail@jga23.com)<br/>      </p>
-    
-
-    <h2>Download</h2>
-    <p>
-      You can download this project in either
-      <a href="https://github.com/jgallen23/toc/zipball/master">zip</a> or
-      <a href="https://github.com/jgallen23/toc/tarball/master">tar formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/jgallen23/toc</pre>
-    </p>
-
-    <div class="footer">
-      get the source code on GitHub : <a href="https://github.com/jgallen23/toc">jgallen23/toc</a>
-    </div>
-
-  </div>
-
-</body>
-</html>
+<span class="id">#toc</span> <span class="class">.active</span> <span class="rules">{
+    <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="number">#336699</span></span>;</span>
+<span class="rule">}</span></span></code></pre>
+<h2>Contributors</h2>
+<ul>
+<li>Greg Allen (<a href="http://twitter.com/jgaui">@jgaui</a>) <a href="http://jga.me">jga.me</a></li>
+</ul>
+</div>
+<script src="dist/site.min.js"></script>
+<script>
+  $('#toc').toc();
+</script>
+</body></html>

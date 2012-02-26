@@ -1,0 +1,32 @@
+{
+  "JAVASCRIPT": {
+    "DIST_DIR": "./dist",
+    "site": [
+      "./ui/jquery.min.js",
+      "./ui/jquery.toc.min.js"
+    ]
+  },
+  "CSS": {
+    "DIST_DIR": "./dist",
+    "site": [
+      "./ui/common.css",
+      "./ui/ir_black.css"
+    ]
+  },
+  "JSHINT_OPTS": {
+    "boss": true,
+    "forin": false,
+    "curly": true,
+    "debug": false,
+    "devel": false,
+    "evil": false,
+    "regexp": false,
+    "undef": false,
+    "sub": true,
+    "white": false,
+    "indent": 2,
+    "whitespace": false,
+    "asi": true
+  }
+}
+

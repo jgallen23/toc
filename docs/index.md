@@ -83,6 +83,7 @@ Defaults shown below
 - initial commit
 
 ##Future
+- Figure out how to handle headlines on bottom of page
 - Zepto.js support (should work, need to verify)
 - Ender support
 

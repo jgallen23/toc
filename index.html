@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>toc</title>
+		<title>TOC</title>
     <link href='http://fonts.googleapis.com/css?family=Voces' rel='stylesheet' type='text/css'>
 		<link type="text/css" rel="stylesheet" href="dist/site.css"/>
 		<script type="text/javascript">
@@ -30,10 +30,12 @@
 <li>Extremely lightweight (744 bytes gzipped)</li>
 <li>Can have multiple on a page</li>
 </ul>
-<h2>Installation</h2>
-<p>Download <a href="">here</a>
-
-</p>
+<h2>Download</h2>
+<ul>
+<li><a href="https://raw.github.com/jgallen23/toc/master/dist/jquery.toc.min.js">Production</a></li>
+<li><a href="https://raw.github.com/jgallen23/toc/master/dist/jquery.toc.js">Development</a></li>
+<li><a href="http://github.com/jgallen23/toc">Source</a></li>
+</ul>
 <h2>Usage</h2>
 <pre><code>$(<span class="string">'#toc'</span>).toc();</code></pre>
 <h3>Options</h3>
@@ -54,7 +56,8 @@
     <span class="rule"><span class="attribute">left</span>:<span class="value"> <span class="number">0</span>px</span>;</span>
     <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">100</span>%</span>;</span>
     <span class="rule"><span class="attribute">position</span>:<span class="value"> fixed</span>;</span>
-    <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="number">#000</span></span>;</span>
+    <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="number">#333</span></span>;</span>
+    <span class="rule"><span class="attribute">box-shadow</span>:<span class="value"> inset -<span class="number">5</span>px <span class="number">0</span> <span class="number">5</span>px <span class="number">0</span>px <span class="number">#000</span></span>;</span>
     <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">150</span>px</span>;</span>
     <span class="rule"><span class="attribute">padding-top</span>:<span class="value"> <span class="number">20</span>px</span>;</span>
     <span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#fff</span></span>;</span>
@@ -73,11 +76,31 @@
 <span class="id">#toc</span> <span class="tag">a</span> <span class="rules">{
     <span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#fff</span></span>;</span>
     <span class="rule"><span class="attribute">text-decoration</span>:<span class="value"> none</span>;</span>
+    <span class="rule"><span class="attribute">display</span>:<span class="value"> block</span>;</span>
 <span class="rule">}</span></span>
 
-<span class="id">#toc</span> <span class="class">.active</span> <span class="rules">{
+<span class="id">#toc</span> <span class="class">.toc-h2</span> <span class="rules">{
+    <span class="rule"><span class="attribute">padding-left</span>:<span class="value"> <span class="number">10</span>px</span>;</span>
+<span class="rule">}</span></span>
+
+<span class="id">#toc</span> <span class="class">.toc-h3</span> <span class="rules">{
+    <span class="rule"><span class="attribute">padding-left</span>:<span class="value"> <span class="number">20</span>px</span>;</span>
+<span class="rule">}</span></span>
+
+<span class="id">#toc</span> <span class="class">.toc-active</span> <span class="rules">{
     <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="number">#336699</span></span>;</span>
+    <span class="rule"><span class="attribute">box-shadow</span>:<span class="value"> inset -<span class="number">5</span>px <span class="number">0</span>px <span class="number">10</span>px -<span class="number">5</span>px <span class="number">#000</span></span>;</span>
 <span class="rule">}</span></span></code></pre>
+<h2>History</h2>
+<h3>0.0.1</h3>
+<ul>
+<li>initial commit</li>
+</ul>
+<h2>Future</h2>
+<ul>
+<li>Zepto.js support (should work, need to verify)</li>
+<li>Ender support</li>
+</ul>
 <h2>Contributors</h2>
 <ul>
 <li>Greg Allen (<a href="http://twitter.com/jgaui">@jgaui</a>) <a href="http://jga.me">jga.me</a></li>

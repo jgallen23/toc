@@ -6,13 +6,15 @@
   * MIT License
   */
 
-jQuery.fn.toc = function(options) {
+!function($) {
+$.fn.toc = function(options) {
   var self = this;
   var opts = $.extend({}, jQuery.fn.toc.defaults, options);
 
   var container = $(opts.container);
   var headings = $(opts.selectors, container);
   var headingOffsets = [];
+  var activeClassName = opts.prefix+'-active';
 
   var scrollTo = function(e) {
     if (opts.smoothScrolling) {
@@ -23,6 +25,8 @@ jQuery.fn.toc = function(options) {
         location.hash = elScrollTo;
       });
     }
+    $('li', self).removeClass(activeClassName);
+    $(e.target).parent().addClass(activeClassName);
   };
 
   //highlight on scroll
@@ -35,8 +39,8 @@ jQuery.fn.toc = function(options) {
       var top = $(window).scrollTop();
       for (var i = 0, c = headingOffsets.length; i < c; i++) {
         if (headingOffsets[i] >= top) {
-          $('li', self).removeClass('active');
-          $('li:eq('+i+')', self).addClass('active');
+          $('li', self).removeClass(activeClassName);
+          $('li:eq('+(i-1)+')', self).addClass(activeClassName);
           break;
         }
       }
@@ -53,7 +57,7 @@ jQuery.fn.toc = function(options) {
     var ul = $('<ul/>');
     headings.each(function(i, heading) {
       var $h = $(heading);
-      headingOffsets.push($h.offset().top);
+      headingOffsets.push($h.offset().top - opts.highlightOffset);
 
       //add anchor
       var anchor = $('<span/>').attr('id', opts.prefix+i).insertBefore($h);
@@ -65,13 +69,12 @@ jQuery.fn.toc = function(options) {
       .bind('click', scrollTo);
 
       var li = $('<li/>')
-      .addClass(opts.prefix+$h[0].tagName)
+      .addClass(opts.prefix+'-'+$h[0].tagName.toLowerCase())
       .append(a);
 
       ul.append(li);
     });
     var el = $(this);
-    console.log(el);
     el.html(ul);
   });
 };
@@ -82,6 +85,8 @@ jQuery.fn.toc.defaults = {
   selectors: 'h1,h2,h3',
   smoothScrolling: true,
   prefix: 'toc',
-  highlightOnScroll: true
+  highlightOnScroll: true,
+  highlightOffset: 100
 };
 
+}(jQuery);

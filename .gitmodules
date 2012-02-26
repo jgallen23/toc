@@ -1,0 +1,3 @@
+[submodule "site"]
+	path = site
+	url = git@github.com:jgallen23/toc.git

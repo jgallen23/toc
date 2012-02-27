@@ -1,6 +1,7 @@
 #wrapper { 
-  width: 900px; 
-  margin: 0 auto; 
+  /*width: 900px; */
+  /*margin: 0 auto; */
+	margin-left: 200px;
 }
 
 a {

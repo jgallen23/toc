@@ -1,6 +1,6 @@
 /*!
   * jquery.toc.js - A jQuery plugin that will automaticall generate a table of contents. 
-  * v0.0.1
+  * v0.0.2
   * https://github.com/jgallen23/toc
   * copyright JGA 2012
   * MIT License
@@ -60,12 +60,12 @@ $.fn.toc = function(options) {
       headingOffsets.push($h.offset().top - opts.highlightOffset);
 
       //add anchor
-      var anchor = $('<span/>').attr('id', opts.prefix+i).insertBefore($h);
+      var anchor = $('<span/>').attr('id', opts.anchorName(i, heading, opts.prefix)).insertBefore($h);
 
       //build TOC item
       var a = $('<a/>')
       .text($h.text())
-      .attr('href', '#'+opts.prefix+i)
+      .attr('href', '#' + opts.anchorName(i, heading, opts.prefix))
       .bind('click', scrollTo);
 
       var li = $('<li/>')
@@ -86,7 +86,10 @@ jQuery.fn.toc.defaults = {
   smoothScrolling: true,
   prefix: 'toc',
   highlightOnScroll: true,
-  highlightOffset: 100
+  highlightOffset: 100,
+  anchorName: function(i, heading, prefix) {
+    return prefix+i;
+  } 
 };
 
 }(jQuery);

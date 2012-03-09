@@ -30,7 +30,10 @@ Defaults shown below
 		'smoothScrolling': true, //enable or disable smooth scrolling on click
 		'prefix': 'toc', //prefix for anchor tags and class names
 		'highlightOnScroll': true, //add class to heading that is currently in focus
-		'highlightOffset': 100 //offset to trigger the next headline
+		'highlightOffset': 100, //offset to trigger the next headline
+		'anchorName': function(i, heading, prefix) { //custom function for anchor name
+			return prefix+i;
+		} 
 	});
 
 ##Example CSS
@@ -78,6 +81,9 @@ Defaults shown below
 	}
 
 ##History
+
+###0.0.2
+- custom function for setting anchor name (thanks dvberkel)
 
 ###0.0.1
 - initial commit

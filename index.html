@@ -48,7 +48,10 @@
     <span class="string">'smoothScrolling'</span>: <span class="literal">true</span>, <span class="comment">//enable or disable smooth scrolling on click</span>
     <span class="string">'prefix'</span>: <span class="string">'toc'</span>, <span class="comment">//prefix for anchor tags and class names</span>
     <span class="string">'highlightOnScroll'</span>: <span class="literal">true</span>, <span class="comment">//add class to heading that is currently in focus</span>
-    <span class="string">'highlightOffset'</span>: <span class="number">100</span> <span class="comment">//offset to trigger the next headline</span>
+    <span class="string">'highlightOffset'</span>: <span class="number">100</span>, <span class="comment">//offset to trigger the next headline</span>
+    <span class="string">'anchorName'</span>: <span class="function"><span class="keyword">function</span><span class="params">(i, heading, prefix)</span> {</span> <span class="comment">//custom function for anchor name</span>
+        <span class="keyword">return</span> prefix+i;
+    } 
 });</code></pre>
 <h2>Example CSS</h2>
 <pre><code><span class="id">#toc</span> <span class="rules">{
@@ -92,6 +95,10 @@
     <span class="rule"><span class="attribute">box-shadow</span>:<span class="value"> inset -<span class="number">5</span>px <span class="number">0</span>px <span class="number">10</span>px -<span class="number">5</span>px <span class="number">#000</span></span>;</span>
 <span class="rule">}</span></span></code></pre>
 <h2>History</h2>
+<h3>0.0.2</h3>
+<ul>
+<li>custom function for setting anchor name (thanks dvberkel)</li>
+</ul>
 <h3>0.0.1</h3>
 <ul>
 <li>initial commit</li>

@@ -1,0 +1,14 @@
+{
+	"author": "jgallen23",
+	"name": "jquery-toc",
+	"description": "jQuery Table of Contents Plugin",
+	"version": "0.0.2",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/jgallen23/toc.git"
+	},
+	"dependencies": {
+		"smoosh": "*",
+		"markx": "*"
+	}
+}

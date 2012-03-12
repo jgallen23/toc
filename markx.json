@@ -1,0 +1,32 @@
+{
+  "template": "template/layout/template.jade",
+  "input": "../docs/index.md",
+  "output": "index.html",
+  "data": {
+    "pageTitle": "TOC",
+    "githubUrl": "http://github.com/jgallen23/toc"
+  },
+  "masher": {
+    "assetPath": "",
+    "outputPath": "dist",
+    "groups": {
+      "common": {
+        "styles": [
+          "template/ui/common.css",
+          "template/ui/ir_black.css"
+        ],
+        "scripts": [
+          "template/ui/jquery.min.js",
+          "template/ui/jquery.toc.min.js"
+        ]
+      }
+    },
+    "plugins": {
+      "pre": [
+      ],
+      "post": [
+        "hash"
+      ]
+    }
+  }
+}

@@ -1,4 +1,4 @@
-<html><head><title>TOC</title><link href="http://fonts.googleapis.com/css?family=Voces" rel="stylesheet" type="text/css"/><link rel="stylesheet" href="dist/common-343022c5.css"/><script>var _gaq = _gaq || [];
+<html><head><title>TOC | jQuery Table of Contents Plugin</title><link href="http://fonts.googleapis.com/css?family=Voces" rel="stylesheet" type="text/css"/><link rel="stylesheet" href="dist/common-5dc18558.css"/><script>var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-24017782-2']);
 _gaq.push(['_trackPageview']);
 (function() {
@@ -101,5 +101,10 @@ _gaq.push(['_trackPageview']);
 <ul>
 <li>Greg Allen (<a href="http://twitter.com/jgaui">@jgaui</a>) <a href="http://jga.me">jga.me</a></li>
 </ul>
-</div><script src="dist/common-9d6d9de4.js"></script><script>$('#toc').toc();
+</div><script src="dist/common-84a41507.js"></script><script>var ghInfo = $('<div/>').hubInfo({ 
+  user: 'jgallen23',
+  repo: 'toc'
+});
+$('h2:eq(0)').before(ghInfo);
+$('#toc').toc();
 </script></body></html>

@@ -3,8 +3,10 @@
   "input": "../docs/index.md",
   "output": "index.html",
   "data": {
-    "pageTitle": "TOC",
-    "githubUrl": "http://github.com/jgallen23/toc"
+    "pageTitle": "TOC | jQuery Table of Contents Plugin",
+    "user": "jgallen23",
+    "repo": "toc",
+    "livejs": false
   },
   "masher": {
     "assetPath": "",
@@ -13,11 +15,14 @@
       "common": {
         "styles": [
           "template/ui/common.css",
-          "template/ui/ir_black.css"
+          "template/ui/ir_black.css",
+          "template/ui/vendor/hubinfo/dist/hubinfo.css"
         ],
         "scripts": [
           "template/ui/jquery.min.js",
-          "template/ui/jquery.toc.min.js"
+          "template/ui/jquery.toc.min.js",
+          "template/ui/vendor/hubinfo/dist/hubinfo.js",
+          "template/ui/vendor/hubinfo/dist/templates/social.js"
         ]
       }
     },

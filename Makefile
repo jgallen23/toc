@@ -2,17 +2,18 @@ run:
 	./node_modules/.bin/smoosh make build.json
 
 site : docs/index.md dist/jquery.toc.min.js
-	@cp dist/jquery.toc.min.js site/ui/
-	@cd site && ../node_modules/.bin/smoosh make build.json
-	@cd site && ../node_modules/.bin/markx --lang javascript --head layout/head.html --foot layout/foot.html ../docs/index.md > index.html
+	@rm -r site/dist
+	@mkdir -p site/dist
+	@cp -r site/template/ui/vendor/hubinfo/dist/images site/dist/
+	@cd site && ../node_modules/.bin/markx markx.json
 
-preview-site:
-	@cp dist/jquery.toc.min.js site/ui/
-	@cd site && ../node_modules/.bin/smoosh make build.json
-	@cd site && ../node_modules/.bin/markx --lang javascript --head layout/head.html --foot layout/foot.html --preview 8001 ../docs/index.md
+site-clean:
+	rm -rf site/dist/*
+
+site-preview:
+	@cd site && ../node_modules/.bin/markx --preview 8001 markx.json
 
 install:
-	npm install smoosh
 	npm install markx
 
-.PHONY: preview-site
+.PHONY: site-preview site-clean 

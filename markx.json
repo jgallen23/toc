@@ -20,7 +20,7 @@
         ],
         "scripts": [
           "template/ui/jquery.min.js",
-          "template/ui/jquery.toc.min.js",
+          "template/ui/jquery.toc.js",
           "template/ui/vendor/hubinfo/dist/hubinfo.js",
           "template/ui/vendor/hubinfo/dist/templates/social.js"
         ]

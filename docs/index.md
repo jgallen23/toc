@@ -33,6 +33,9 @@ Defaults shown below
 		'highlightOffset': 100, //offset to trigger the next headline
 		'anchorName': function(i, heading, prefix) { //custom function for anchor name
 			return prefix+i;
+		},
+		'headerText': function(i, heading, $heading) { // custom function building the header-item text
+			return $heading.text();
 		} 
 	});
 

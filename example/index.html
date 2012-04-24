@@ -9,13 +9,19 @@
 				margin: 0 auto;
 			}
 			.toc {
-				background: #000;
-				width: 200px;
-				position: fixed;
-				color: #fff;
+                top: 0px;
+                left: 0px;
+                height: 100%;
+                position: fixed;
+                background: #333;
+                box-shadow: inset -5px 0 5px 0px #000;
+                width: 150px;
+                padding-top: 20px;
+                color: #fff;
 			}
 			.toc a {
 				color: #fff;
+				text-decoration: none;
 			}
 			.toc .tocH2 {
 				margin-left: 10px
@@ -29,6 +35,18 @@
 			.toc.right {
 				right: 0
 			}
+			.toc ul {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+            .toc li {
+                padding: 5px 10px;
+            }
+            .toc .toc-active {
+                background: #336699;
+                box-shadow: inset -5px 0px 10px -5px #000;
+            }
 		</style>
 	</head>
 	<body>

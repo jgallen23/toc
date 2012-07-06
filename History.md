@@ -1,4 +1,15 @@
 
+0.1.0 / 2012-07-05 
+==================
+
+  * added smoosh to Makefile
+  * updated docs
+  * removed site submodule
+  * Added callback for when a new section is highlighted
+  * selected event
+  * adds another option to customize the header link text
+  * updated site
+
 0.0.3 / 2012-04-06 
 ==================
 

@@ -56,11 +56,13 @@ $.fn.toc = function(options) {
       clearTimeout(timeout);
     }
     timeout = setTimeout(function() {
-      var top = $(window).scrollTop();
+      var top = $(window).scrollTop(),
+        highlighted;
       for (var i = 0, c = headingOffsets.length; i < c; i++) {
         if (headingOffsets[i] >= top) {
           $('li', self).removeClass(activeClassName);
-          $('li:eq('+(i-1)+')', self).addClass(activeClassName);
+          highlighted = $('li:eq('+(i-1)+')', self).addClass(activeClassName);
+          opts.onHighlight(highlighted);
           break;
         }
       }
@@ -73,6 +75,7 @@ $.fn.toc = function(options) {
 
   return this.each(function() {
     //build TOC
+    var el = $(this);
     var ul = $('<ul/>');
     headings.each(function(i, heading) {
       var $h = $(heading);
@@ -83,9 +86,12 @@ $.fn.toc = function(options) {
 
       //build TOC item
       var a = $('<a/>')
-      .text(opts.headerText(i, heading, $h))
+      .text($h.text())
       .attr('href', '#' + opts.anchorName(i, heading, opts.prefix))
-      .bind('click', scrollTo);
+      .bind('click', function(e) { 
+        scrollTo(e);
+        el.trigger('selected', $(this).attr('href'));
+      });
 
       var li = $('<li/>')
       .addClass(opts.prefix+'-'+$h[0].tagName.toLowerCase())
@@ -93,7 +99,6 @@ $.fn.toc = function(options) {
 
       ul.append(li);
     });
-    var el = $(this);
     el.html(ul);
   });
 };
@@ -104,14 +109,13 @@ jQuery.fn.toc.defaults = {
   selectors: 'h1,h2,h3',
   smoothScrolling: true,
   prefix: 'toc',
+  onHighlighted: function() {},
   highlightOnScroll: true,
   highlightOffset: 100,
   anchorName: function(i, heading, prefix) {
     return prefix+i;
-  },
-  headerText: function(i, heading, $h) {
-    return $h.text();
-  } 
+  }
+
 };
 
 }(jQuery);

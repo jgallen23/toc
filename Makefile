@@ -15,5 +15,6 @@ site-preview:
 
 install:
 	npm install markx
+	npm install smoosh
 
 .PHONY: site-preview site-clean 

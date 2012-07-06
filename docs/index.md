@@ -29,14 +29,13 @@ Defaults shown below
 		'container': 'body', //element to find all selectors in
 		'smoothScrolling': true, //enable or disable smooth scrolling on click
 		'prefix': 'toc', //prefix for anchor tags and class names
-        'onHighlight': function(el) {}, // When a new section is highlighted, this function 
-                                        // is called and passed the newly highlighted element
+		'onHighlight': function(el) {}, //called when a new section is highlighted 
 		'highlightOnScroll': true, //add class to heading that is currently in focus
 		'highlightOffset': 100, //offset to trigger the next headline
 		'anchorName': function(i, heading, prefix) { //custom function for anchor name
 			return prefix+i;
 		},
-		'headerText': function(i, heading, $heading) { // custom function building the header-item text
+		'headerText': function(i, heading, $heading) { //custom function building the header-item text
 			return $heading.text();
 		} 
 	});
@@ -87,11 +86,7 @@ Defaults shown below
 
 ##History
 
-###0.0.2
-- custom function for setting anchor name (thanks dvberkel)
-
-###0.0.1
-- initial commit
+[View](https://raw.github.com/jgallen23/toc/master/History.md)
 
 ##Future
 - Figure out how to handle headlines on bottom of page

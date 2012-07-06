@@ -1,12 +1,11 @@
-<!DOCTYPE html><html><head><title>TOC | jQuery Table of Contents Plugin</title><link href="http://fonts.googleapis.com/css?family=Voces" rel="stylesheet" type="text/css"><link rel="stylesheet" href="dist/common-cdd988a9.css"/><script>var _gaq = _gaq || [];
+<!DOCTYPE html><html><head><title>TOC | jQuery Table of Contents Plugin</title><link href="http://fonts.googleapis.com/css?family=Voces" rel="stylesheet" type="text/css"><link rel="stylesheet" href="dist/common.css"/><script>var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-24017782-2']);
 _gaq.push(['_trackPageview']);
 (function() {
   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
-</script></head><body><div id="toc"></div><a href="http://github.com/jgallen23/toc"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/7afbc8b248c68eb468279e8c17986ad46549fb71/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub"></a><div id="wrapper"><h1>TOC</h1>
+})();</script></head><body><div id="toc"></div><a href="http://github.com/jgallen23/toc"><img style="position: absolute; top: 0; right: 0; border: 0;" src="dist/images/ribbon.png" alt="Fork me on GitHub"></a><div id="wrapper"><h1>TOC</h1>
 <p>TOC is a jQuery plugin that will automatically generate a table of contents for your page.  You can see an example of it on the left side of the page.
 
 </p>
@@ -35,10 +34,14 @@ _gaq.push(['_trackPageview']);
     <span class="string">'container'</span>: <span class="string">'body'</span>, <span class="comment">//element to find all selectors in</span>
     <span class="string">'smoothScrolling'</span>: <span class="literal">true</span>, <span class="comment">//enable or disable smooth scrolling on click</span>
     <span class="string">'prefix'</span>: <span class="string">'toc'</span>, <span class="comment">//prefix for anchor tags and class names</span>
+    <span class="string">'onHighlight'</span>: <span class="keyword">function</span>(el) {}, <span class="comment">//called when a new section is highlighted </span>
     <span class="string">'highlightOnScroll'</span>: <span class="literal">true</span>, <span class="comment">//add class to heading that is currently in focus</span>
     <span class="string">'highlightOffset'</span>: <span class="number">100</span>, <span class="comment">//offset to trigger the next headline</span>
-    <span class="string">'anchorName'</span>: <span class="function"><span class="keyword">function</span><span class="params">(i, heading, prefix)</span> {</span> <span class="comment">//custom function for anchor name</span>
+    <span class="string">'anchorName'</span>: <span class="keyword">function</span>(i, heading, prefix) { <span class="comment">//custom function for anchor name</span>
         <span class="keyword">return</span> prefix+i;
+    },
+    <span class="string">'headerText'</span>: <span class="keyword">function</span>(i, heading, $heading) { <span class="comment">//custom function building the header-item text</span>
+        <span class="keyword">return</span> $heading.text();
     } 
 });</code></pre>
 <h2>Example CSS</h2>
@@ -47,8 +50,8 @@ _gaq.push(['_trackPageview']);
     <span class="rule"><span class="attribute">left</span>:<span class="value"> <span class="number">0</span>px</span>;</span>
     <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">100</span>%</span>;</span>
     <span class="rule"><span class="attribute">position</span>:<span class="value"> fixed</span>;</span>
-    <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="number">#333</span></span>;</span>
-    <span class="rule"><span class="attribute">box-shadow</span>:<span class="value"> inset -<span class="number">5</span>px <span class="number">0</span> <span class="number">5</span>px <span class="number">0</span>px <span class="number">#000</span></span>;</span>
+    <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="hexcolor">#333</span></span>;</span>
+    <span class="rule"><span class="attribute">box-shadow</span>:<span class="value"> inset -<span class="number">5</span>px <span class="number">0</span> <span class="number">5</span>px <span class="number">0</span>px <span class="hexcolor">#000</span></span>;</span>
     <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">150</span>px</span>;</span>
     <span class="rule"><span class="attribute">padding-top</span>:<span class="value"> <span class="number">20</span>px</span>;</span>
     <span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#fff</span></span>;</span>
@@ -79,18 +82,13 @@ _gaq.push(['_trackPageview']);
 <span class="rule">}</span></span>
 
 <span class="id">#toc</span> <span class="class">.toc-active</span> <span class="rules">{
-    <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="number">#336699</span></span>;</span>
-    <span class="rule"><span class="attribute">box-shadow</span>:<span class="value"> inset -<span class="number">5</span>px <span class="number">0</span>px <span class="number">10</span>px -<span class="number">5</span>px <span class="number">#000</span></span>;</span>
+    <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="hexcolor">#336699</span></span>;</span>
+    <span class="rule"><span class="attribute">box-shadow</span>:<span class="value"> inset -<span class="number">5</span>px <span class="number">0</span>px <span class="number">10</span>px -<span class="number">5</span>px <span class="hexcolor">#000</span></span>;</span>
 <span class="rule">}</span></span></code></pre>
 <h2>History</h2>
-<h3>0.0.2</h3>
-<ul>
-<li>custom function for setting anchor name (thanks dvberkel)</li>
-</ul>
-<h3>0.0.1</h3>
-<ul>
-<li>initial commit</li>
-</ul>
+<p><a href="https://raw.github.com/jgallen23/toc/master/History.md">View</a>
+
+</p>
 <h2>Future</h2>
 <ul>
 <li>Figure out how to handle headlines on bottom of page</li>
@@ -101,10 +99,10 @@ _gaq.push(['_trackPageview']);
 <ul>
 <li>Greg Allen (<a href="http://twitter.com/jgaui">@jgaui</a>) <a href="http://jga.me">jga.me</a></li>
 </ul>
-</div><script src="dist/common-62786ba9.js"></script><script>var ghInfo = $('<div/>').hubInfo({ 
+</div><script src="dist/common.js"></script><script>var ghInfo = $('<div/>').hubInfo({ 
   user: 'jgallen23',
   repo: 'toc'
+}).on('render', function() {
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 });
-$('h2:eq(0)').before(ghInfo);
-$('#toc').toc();
-</script></body></html>
+$('h2:eq(0)').before(ghInfo);</script><script>$('#toc').toc();</script></body></html>

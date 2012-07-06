@@ -83,7 +83,7 @@ $.fn.toc = function(options) {
 
       //build TOC item
       var a = $('<a/>')
-      .text($h.text())
+      .text(opts.headerText(i, heading, $h))
       .attr('href', '#' + opts.anchorName(i, heading, opts.prefix))
       .bind('click', scrollTo);
 
@@ -108,6 +108,9 @@ jQuery.fn.toc.defaults = {
   highlightOffset: 100,
   anchorName: function(i, heading, prefix) {
     return prefix+i;
+  },
+  headerText: function(i, heading, $h) {
+    return $h.text();
   } 
 };
 

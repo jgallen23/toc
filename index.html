@@ -42,7 +42,10 @@ _gaq.push(['_trackPageview']);
     },
     <span class="string">'headerText'</span>: <span class="keyword">function</span>(i, heading, $heading) { <span class="comment">//custom function building the header-item text</span>
         <span class="keyword">return</span> $heading.text();
-    } 
+    },
+<span class="string">'itemClass'</span>: <span class="keyword">function</span>(i, heading, $heading, prefix) { <span class="comment">// custom function for item class</span>
+  <span class="keyword">return</span> $heading[<span class="number">0</span>].tagName.toLowerCase();
+}
 });</code></pre>
 <h2>Example CSS</h2>
 <pre><code><span class="id">#toc</span> <span class="rules">{
@@ -103,6 +106,7 @@ _gaq.push(['_trackPageview']);
   user: 'jgallen23',
   repo: 'toc'
 }).on('render', function() {
+  $('<a href="https://twitter.com/share" class="twitter-share-button" data-via="JGAui">Tweet</a>').insertAfter('.repo-forks');
   !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 });
 $('h2:eq(0)').before(ghInfo);</script><script>$('#toc').toc();</script></body></html>

@@ -1,6 +1,6 @@
 #TOC
 
-TOC is a jQuery plugin that will automatically generate a table of contents for your page.  You can see an example of it on the left side of the page.
+TOC is a jQuery plugin that will automatically generate a table of contents for your page. You can see an example of it on the left side of the page.
 
 ##Features
 - Completely customizable
@@ -38,9 +38,9 @@ Defaults shown below
 		'headerText': function(i, heading, $heading) { //custom function building the header-item text
 			return $heading.text();
 		},
-    'itemClass': function(i, heading, $heading, prefix) { // custom function for item class
-      return $heading[0].tagName.toLowerCase();
-    }
+		'itemClass': function(i, heading, $heading, prefix) { // custom function for item class
+			return $heading[0].tagName.toLowerCase();
+		}
 	});
 
 ##Example CSS

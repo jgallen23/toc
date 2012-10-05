@@ -1,4 +1,11 @@
 
+0.1.1 / 2012-10-05 
+==================
+
+  * updated example
+  * code cleanup, fixed onHighlight, removed console.log
+  * Add headerText and itemClass options
+
 0.1.0 / 2012-07-05 
 ==================
 

@@ -1,6 +1,6 @@
 /*!
   * jquery.toc.js - A jQuery plugin that will automatically generate a table of contents. 
-  * v0.0.3
+  * v0.1.1
   * https://github.com/jgallen23/toc
   * copyright JGA 2012
   * MIT License
@@ -86,16 +86,16 @@ $.fn.toc = function(options) {
 
       //build TOC item
       var a = $('<a/>')
-      .text($h.text())
-      .attr('href', '#' + opts.anchorName(i, heading, opts.prefix))
-      .bind('click', function(e) { 
-        scrollTo(e);
-        el.trigger('selected', $(this).attr('href'));
-      });
+        .text(opts.headerText(i, heading, $h))
+        .attr('href', '#' + opts.anchorName(i, heading, opts.prefix))
+        .bind('click', function(e) { 
+          scrollTo(e);
+          el.trigger('selected', $(this).attr('href'));
+        });
 
       var li = $('<li/>')
-      .addClass(opts.prefix+'-'+$h[0].tagName.toLowerCase())
-      .append(a);
+        .addClass(opts.itemClass(i, heading, $h, opts.prefix))
+        .append(a);
 
       ul.append(li);
     });
@@ -109,11 +109,17 @@ jQuery.fn.toc.defaults = {
   selectors: 'h1,h2,h3',
   smoothScrolling: true,
   prefix: 'toc',
-  onHighlighted: function() {},
+  onHighlight: function() {},
   highlightOnScroll: true,
   highlightOffset: 100,
   anchorName: function(i, heading, prefix) {
     return prefix+i;
+  },
+  headerText: function(i, heading, $heading) {
+    return $heading.text();
+  },
+  itemClass: function(i, heading, $heading, prefix) {
+    return prefix + '-' + $heading[0].tagName.toLowerCase();
   }
 
 };

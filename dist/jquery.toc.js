@@ -1,6 +1,6 @@
 /*!
  * toc - jQuery Table of Contents Plugin
- * v0.1.1
+ * v0.1.2
  * http://projects.jga.me/toc/
  * copyright Greg Allen 2013
  * MIT License
@@ -15,32 +15,13 @@ $.fn.toc = function(options) {
   var headingOffsets = [];
   var activeClassName = opts.prefix+'-active';
 
-  var findScrollableElement = function(els) {
-    for (var i = 0, argLength = arguments.length; i < argLength; i++) {
-      var el = arguments[i],
-          $scrollElement = $(el);
-      if ($scrollElement.scrollTop() > 0) {
-        return $scrollElement;
-      } else {
-        $scrollElement.scrollTop(1);
-        var isScrollable = $scrollElement.scrollTop() > 0;
-        $scrollElement.scrollTop(0);
-        if (isScrollable) {
-          return $scrollElement;
-        }
-      }
-    }
-    return [];
-  };
-  var scrollable = findScrollableElement(opts.container, 'body', 'html');
-
   var scrollTo = function(e) {
     if (opts.smoothScrolling) {
       e.preventDefault();
       var elScrollTo = $(e.target).attr('href');
       var $el = $(elScrollTo);
-      
-      scrollable.animate({ scrollTop: $el.offset().top }, 400, 'swing', function() {
+
+      $('body,html').animate({ scrollTop: $el.offset().top }, 400, 'swing', function() {
         location.hash = elScrollTo;
       });
     }

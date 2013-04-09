@@ -1,4 +1,11 @@
 
+0.1.2 / 2013-04-08 
+==================
+
+  * optimized scroll function.  fixes #15
+  * migrated to grunt for building
+  * fixed tabs on docs/index
+
 0.1.1 / 2012-10-05 
 ==================
 

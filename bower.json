@@ -10,5 +10,12 @@
   },
   "devDependencies": {
     "assert": "*"
-  }
+  },
+  "ignore": [
+    "test",
+    "example",
+    "lib",
+    "Gruntfile.js",
+    "package.json"
+  ]
 }

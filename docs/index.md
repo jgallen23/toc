@@ -32,7 +32,7 @@ Defaults shown below
 		'onHighlight': function(el) {}, //called when a new section is highlighted 
 		'highlightOnScroll': true, //add class to heading that is currently in focus
 		'highlightOffset': 100, //offset to trigger the next headline
-		'anchorName': 'short', // format to use for anchor names/ids - 'short' (for prefix-{uniqueInteger}, 'verbose' (for 'hyphen-separated-heading-text'), or a generator function (i, heading, prefix) { }
+		'anchorName': 'short', // format to use for anchor names/ids - 'short' (for prefix-{uniqueInteger}, 'verbose' (for prefix-{hyphen-separated-heading-text}), or a generator function (i, heading, prefix) { }
 		'headerText': function(i, heading, $heading) { //custom function building the header-item text
 			return $heading.text();
 		},

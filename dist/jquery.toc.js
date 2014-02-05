@@ -13,7 +13,7 @@ $.fn.toc = function(options) {
   var container = $(opts.container);
   var headings = $(opts.selectors, container);
   var headingOffsets = [];
-  var activeClassName = opts.prefix+'-active';
+  var activeClassName = [opts.prefix, 'active'].join('-');
 
   var scrollTo = function(e) {
     if (opts.smoothScrolling) {
@@ -99,7 +99,7 @@ jQuery.fn.toc.defaults = {
     return $heading.text();
   },
   itemClass: function(i, heading, $heading, prefix) {
-    return prefix + '-' + $heading[0].tagName.toLowerCase();
+    return [prefix, $heading[0].tagName.toLowerCase()].join('-');
   }
 
 };

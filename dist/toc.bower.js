@@ -2,7 +2,7 @@
  * toc - jQuery Table of Contents Plugin
  * v0.1.2
  * http://projects.jga.me/toc/
- * copyright Greg Allen 2013
+ * copyright Greg Allen 2014
  * MIT License
 */
 (function($) {
@@ -11,6 +11,7 @@ $.fn.toc = function(options) {
   var opts = $.extend({}, jQuery.fn.toc.defaults, options);
 
   var container = $(opts.container);
+  var listType  = $(opts.listType);
   var headings = $(opts.selectors, container);
   var headingOffsets = [];
   var activeClassName = opts.prefix+'-active';
@@ -56,7 +57,7 @@ $.fn.toc = function(options) {
   return this.each(function() {
     //build TOC
     var el = $(this);
-    var ul = $('<ul/>');
+    var ul = $(listType);
     headings.each(function(i, heading) {
       var $h = $(heading);
       headingOffsets.push($h.offset().top - opts.highlightOffset);
@@ -86,6 +87,7 @@ $.fn.toc = function(options) {
 
 jQuery.fn.toc.defaults = {
   container: 'body',
+  listType: '<ul/>',
   selectors: 'h1,h2,h3',
   smoothScrolling: true,
   prefix: 'toc',

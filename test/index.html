@@ -4,10 +4,13 @@
   <meta charset="utf-8">
   <title>toc Tests</title>
   <link rel="stylesheet" href="../node_modules/grunt-mocha/node_modules/mocha/mocha.css" />
-  <script src="../bower_components/jquery/jquery.min.js"></script>
   <script src="../bower_components/assert/assert.js"></script>
   <script src="../node_modules/grunt-mocha/node_modules/mocha/mocha.js"></script>
-  <!--<script src="../components/blanket/dist/qunit/blanket.min.js" data-cover-adapter="../components/blanket/src/adapters/mocha-blanket.js"></script>-->
+  <script>
+    if (window.location.search == '?blanket=1') {
+      document.write('<scr'+'ipt src="../bower_components/blanket/dist/qunit/blanket.min.js" data-cover-adapter="../bower_components/blanket/src/adapters/mocha-blanket.js"></sc'+'ript>');
+    }
+  </script>
   <script>mocha.setup('tdd')</script>
 </head>
 <body>
@@ -34,11 +37,12 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fermentum ligula a augue sollicitudin a tincidunt felis tincidunt. Donec et urna augue, sed consectetur lacus. Maecenas tincidunt volutpat lorem. Suspendisse turpis tellus, sodales ac commodo id, rhoncus vel augue. Vestibulum nisl nibh, rutrum eu bibendum vitae, bibendum et libero. Suspendisse vel odio vitae leo commodo lacinia. Sed non lacinia nulla. Pellentesque faucibus euismod dictum. Suspendisse potenti.</p>
     </div>
   </div>
-  <script src="../dist/jquery.toc.js" data-cover></script>
+  <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="../dist/toc.js" data-cover></script>
   <script src="toc.test.js"></script>
   <script>
     if (navigator.userAgent.indexOf('PhantomJS') < 0) {
-      mocha.run().globals(['LiveReload']);
+      mocha.run();
     }
   </script>
 </body>

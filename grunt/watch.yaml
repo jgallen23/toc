@@ -1,0 +1,24 @@
+options:
+  livereload: true
+lib:
+  files:
+    - '<%= jshint.lib %>'
+  tasks:
+    - 'scripts'
+test:
+  files:
+    - '<%= jshint.test %>'
+    - 'test/index.html'
+  tasks:
+    - 'jshint'
+    - 'mocha'
+    - 'notify:tests'
+example:
+  files:
+    - 'example/*'
+build:
+  files:
+    - 'bower.json'
+    - 'Gruntfile.js'
+    - 'grunt/*.yaml'
+  tasks: 'default'

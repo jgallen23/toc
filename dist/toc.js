@@ -1,3 +1,11 @@
+/*!
+ * toc - jQuery Table of Contents Plugin
+ * v0.1.2
+ * http://projects.jga.me/toc/
+ * copyright Greg Allen 2014
+ * MIT License
+*/
+
 (function($) {
 $.fn.toc = function(options) {
   var self = this;

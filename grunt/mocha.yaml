@@ -1,0 +1,6 @@
+options:
+  run: true
+  growl: true
+  reporter: Spec
+all:
+  src: test/index.html

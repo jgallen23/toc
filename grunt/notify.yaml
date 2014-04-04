@@ -1,0 +1,9 @@
+generic:
+  options:
+    message: 'Build complete'
+watch:
+  options:
+    message: 'Watch started'
+tests:
+  options:
+    message: 'Tests complete'

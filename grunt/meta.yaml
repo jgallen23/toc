@@ -1,0 +1,8 @@
+banner: |
+  /*!
+   * <%= info.name %> - <%= info.description %>
+   * v<%= info.version %>
+   * <%= info.homepage %>
+   * copyright <%= info.copyright %> <%= grunt.template.today("yyyy") %>
+   * <%= info.license %> License
+  */

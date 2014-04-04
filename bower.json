@@ -5,18 +5,20 @@
   "homepage": "http://projects.jga.me/toc/",
   "license": "MIT",
   "copyright": "Greg Allen",
-  "main": "dist/toc.js",
+  "main": "dist/toc.bower.js",
   "dependencies": {
-    "jquery": ">=1.7.1"
+    "jquery": "*"
   },
   "devDependencies": {
-    "assert": "*"
+    "assert": "*",
+    "blanket": "*"
   },
   "ignore": [
     "test",
     "example",
     "lib",
     "Gruntfile.js",
-    "package.json"
+    "package.json",
+    "grunt"
   ]
 }

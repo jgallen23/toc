@@ -1,0 +1,5 @@
+server:
+  options:
+    hostname: '*'
+    directory: '.'
+    livereload: true

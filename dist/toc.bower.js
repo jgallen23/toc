@@ -1,6 +1,6 @@
 /*!
  * toc - jQuery Table of Contents Plugin
- * v0.1.2
+ * v0.2.0
  * http://projects.jga.me/toc/
  * copyright Greg Allen 2014
  * MIT License
@@ -11,19 +11,19 @@ $.fn.toc = function(options) {
   var opts = $.extend({}, jQuery.fn.toc.defaults, options);
 
   var container = $(opts.container);
-  var listType  = $(opts.listType);
   var headings = $(opts.selectors, container);
   var headingOffsets = [];
   var activeClassName = opts.prefix+'-active';
 
-  var scrollTo = function(e) {
+  var scrollTo = function(e, callback) {
     if (opts.smoothScrolling) {
       e.preventDefault();
       var elScrollTo = $(e.target).attr('href');
       var $el = $(elScrollTo);
 
-      $('body,html').animate({ scrollTop: $el.offset().top }, 400, 'swing', function() {
+      $('body,html').animate({ scrollTop: $el.offset().top + opts.scrollToOffset }, 400, 'swing', function() {
         location.hash = elScrollTo;
+        callback();
       });
     }
     $('li', self).removeClass(activeClassName);
@@ -38,15 +38,19 @@ $.fn.toc = function(options) {
     }
     timeout = setTimeout(function() {
       var top = $(window).scrollTop(),
-        highlighted;
+        highlighted, closest = Number.MAX_VALUE, index = 0;
+      
       for (var i = 0, c = headingOffsets.length; i < c; i++) {
-        if (headingOffsets[i] >= top) {
-          $('li', self).removeClass(activeClassName);
-          highlighted = $('li:eq('+(i-1)+')', self).addClass(activeClassName);
-          opts.onHighlight(highlighted);
-          break;
+        var currentClosest = Math.abs(headingOffsets[i] - top);
+        if (currentClosest < closest) {
+          index = i;
+          closest = currentClosest;
         }
       }
+      
+      $('li', self).removeClass(activeClassName);
+      highlighted = $('li:eq('+ index +')', self).addClass(activeClassName);
+      opts.onHighlight(highlighted);      
     }, 50);
   };
   if (opts.highlightOnScroll) {
@@ -57,7 +61,7 @@ $.fn.toc = function(options) {
   return this.each(function() {
     //build TOC
     var el = $(this);
-    var ul = $(listType);
+    var ul = $(opts.listType);
     headings.each(function(i, heading) {
       var $h = $(heading);
       headingOffsets.push($h.offset().top - opts.highlightOffset);
@@ -69,8 +73,11 @@ $.fn.toc = function(options) {
       var a = $('<a/>')
         .text(opts.headerText(i, heading, $h))
         .attr('href', '#' + opts.anchorName(i, heading, opts.prefix))
-        .bind('click', function(e) { 
-          scrollTo(e);
+        .bind('click', function(e) {
+          $(window).unbind('scroll', highlightOnScroll);
+          scrollTo(e, function() {
+            $(window).bind('scroll', highlightOnScroll);
+          });
           el.trigger('selected', $(this).attr('href'));
         });
 
@@ -90,6 +97,7 @@ jQuery.fn.toc.defaults = {
   listType: '<ul/>',
   selectors: 'h1,h2,h3',
   smoothScrolling: true,
+  scrollToOffset: 0,
   prefix: 'toc',
   onHighlight: function() {},
   highlightOnScroll: true,

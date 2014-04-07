@@ -1,4 +1,22 @@
 
+0.2.0 / 2014-04-06 
+==================
+
+  * added option for scrollToOffset
+  * do not highlight when scrolling because of click
+  * select the closest header
+  * fix if multiple tocs on the page
+  * fixed jquery src on example
+  * updated build scripts and dep versions
+  * updated build scripts to use load-grunt-config
+  * Merge pull request #31 from inadarei/master
+  * Support using ordered lists, not just unordered one, for TOC
+  * Supporting usage of ordered lists, not just unordered ones.
+  * Merge pull request #28 from jgallen23/feature/tests
+  * Added some tests.
+  * updated bower to include jquery as a dependency
+  * updated grunt tasks
+
 0.1.2 / 2013-04-08 
 ==================
 

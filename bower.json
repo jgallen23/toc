@@ -1,7 +1,7 @@
 {
   "name": "toc",
   "description": "jQuery Table of Contents Plugin",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "homepage": "http://projects.jga.me/toc/",
   "license": "MIT",
   "copyright": "Greg Allen",

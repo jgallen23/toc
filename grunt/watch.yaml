@@ -4,7 +4,7 @@ lib:
   files:
     - '<%= jshint.lib %>'
   tasks:
-    - 'scripts'
+    - 'lib'
 test:
   files:
     - '<%= jshint.test %>'
@@ -16,7 +16,7 @@ test:
 example:
   files:
     - 'example/*'
-build:
+tools:
   files:
     - 'bower.json'
     - 'Gruntfile.js'

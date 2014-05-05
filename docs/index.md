@@ -11,8 +11,8 @@ TOC is a jQuery plugin that will automatically generate a table of contents for 
 
 ##Download
 
-- [Production](https://raw.github.com/jgallen23/toc/master/dist/jquery.toc.min.js)
-- [Development](https://raw.github.com/jgallen23/toc/master/dist/jquery.toc.js)
+- [Production](https://raw.github.com/jgallen23/toc/master/dist/toc.min.js)
+- [Development](https://raw.github.com/jgallen23/toc/master/dist/toc.js)
 - [Source](http://github.com/jgallen23/toc)
 
 ##Usage

@@ -75,5 +75,21 @@ suite('toc', function() {
         done();
       }, 110);
     });
+
+    test('custom active class', function(done) {
+      assert.equal($(window).scrollTop(), 0);
+
+      $('.toc').toc({
+        container: '#fixture',
+        activeClass: 'active'
+      });
+
+      $(window).scrollTop(~~($('#toc1').offset().top));
+
+      setTimeout(function(){
+        assert.ok($('.toc .active').length, 1);
+        done();
+      }, 110);
+    });
   });
 });

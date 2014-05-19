@@ -54,9 +54,9 @@ suite('toc', function() {
       $('.toc a:first').click();
 
       setTimeout(function(){
-        var elOffset = $('#toc0').offset().top;
         var windowTop = $(window).scrollTop();
-        assert.ok((windowTop <= elOffset + 5 && windowTop >= elOffset - 5));
+        var offset = ($('#toc0').offset().top - $('body').position().top - 0);
+        assert.ok(windowTop <= offset + 5 || windowTop >= offset - 5);
         done();
       }, 400);
     });

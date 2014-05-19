@@ -76,4 +76,19 @@ suite('toc', function() {
       }, 110);
     });
   });
+
+  suite('existing ids', function() {
+    test('should use existing id', function() {
+      assert.equal($(window).scrollTop(), 0);
+
+      $('.toc').toc({
+        container: '#fixture',
+        smoothScrolling: true
+      });
+
+      var lastA = $('.toc a:last');
+
+      assert.equal(lastA.attr('href'), '#last');
+    });
+  });
 });

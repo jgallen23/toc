@@ -33,31 +33,30 @@ suite('toc', function() {
   });
   
   suite('anchor id formatting', function() {
-    test('should be able to use verbose ids', function() {
+    test('should verbose ids by default', function() {
       assert.equal($('.toc ul a').length, 0);
 
       $('.toc').toc({
-        container: '#fixture',
-        anchorName: 'verbose'
+        container: '#fixture'
       });
 
-      assert.equal($('#fixture').find('h1').prev().attr('id'), 'toc-page-title');
+      assert.equal($('#fixture').find('h1').prev().attr('id'), 'toc-page-title-2');
       assert.equal($('#fixture').find('h2').eq(1).prev().attr('id'), 'toc-sub-heading-2');
     });
 
    
-    // test('should be able to use custom id generator', function(done) {
-    //   assert.equal($(window).scrollTop(), 0);
+    test('should be able to use custom id generator', function() {
+      assert.equal($(window).scrollTop(), 0);
       
-    //   $('.toc').toc({
-    //     container: '#fixture',
-    //     anchorName: function (i, heading, prefix) {
-    //       return i + prefix;
-    //     }
-    //   });
+      $('.toc').toc({
+        container: '#fixture',
+        anchorName: function (i, heading, prefix) {
+          return i + prefix;
+        }
+      });
 
-    //   assert.equal($('h1').prev().attr('id'), '0toc');
-    // });
+      assert.equal($('h1').prev().attr('id'), '0toc');
+    });
   });
 
   suite('toc navigation', function() {
@@ -82,7 +81,7 @@ suite('toc', function() {
       $('.toc a:first').click();
 
       setTimeout(function(){
-        var elOffset = $('#toc0').offset().top;
+        var elOffset = $('#toc-page-title-2').offset().top;
         var windowTop = $(window).scrollTop();
         assert.ok((windowTop <= elOffset + 5 && windowTop >= elOffset - 5));
         done();
@@ -96,7 +95,7 @@ suite('toc', function() {
         container: '#fixture'
       });
 
-      $(window).scrollTop(~~($('#toc1').offset().top));
+      $(window).scrollTop(~~($('#toc-page-title-2').offset().top + 100));
       
       setTimeout(function(){
         assert.ok($('.toc ul li:eq(1)').hasClass('toc-active'));

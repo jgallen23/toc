@@ -7,7 +7,8 @@
   "copyright": "Greg Allen",
   "main": "dist/toc.bower.js",
   "dependencies": {
-    "jquery": "*"
+    "jquery": "*",
+    "smooth-scroller": "~0.1.0"
   },
   "devDependencies": {
     "assert": "*",

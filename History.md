@@ -1,4 +1,15 @@
 
+0.3.0 / 2014-05-20 
+==================
+
+  * Allows configuring of activeClass
+  * Verbose IDs
+  * Added ability to override smooth scroll.
+  * Doesn't render span if header has id.
+  * Uses id on element if exists.
+  * Added smooth-scroller plugin support.
+  * updated doc urls
+
 0.2.0 / 2014-04-06 
 ==================
 

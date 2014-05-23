@@ -1,6 +1,6 @@
 /*!
  * toc - jQuery Table of Contents Plugin
- * v0.3.0
+ * v0.3.1
  * http://projects.jga.me/toc/
  * copyright Greg Allen 2014
  * MIT License
@@ -20,7 +20,7 @@
     var el = $(this);
 
     $(options.scrollEl).animate({
-      scrollTop: el.offset().top - $(options.scrollEl).position().top - options.offset
+      scrollTop: el.offset().top - $(options.scrollEl).offset().top - options.offset
     }, options.speed, options.ease, function() {
       var hash = el.attr('id');
 

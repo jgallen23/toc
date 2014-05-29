@@ -1,6 +1,6 @@
 /*!
  * toc - jQuery Table of Contents Plugin
- * v0.3.1
+ * v0.3.2
  * http://projects.jga.me/toc/
  * copyright Greg Allen 2014
  * MIT License

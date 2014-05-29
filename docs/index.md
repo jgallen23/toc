@@ -29,6 +29,7 @@ Defaults shown below
 		'container': 'body', //element to find all selectors in
 		'listType': '<ul/>', //use unordered list. If you need ordered one instead pass: '<ol/>'
 		'smoothScrolling': true, //enable or disable smooth scrolling on click
+    'addBottomPadding': null, //selector for last elem on page, use to reach bottom elements
 		'prefix': 'toc', //prefix for anchor tags and class names
 		'onHighlight': function(el) {}, //called when a new section is highlighted 
 		'highlightOnScroll': true, //add class to heading that is currently in focus

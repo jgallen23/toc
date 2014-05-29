@@ -65,14 +65,29 @@ $.fn.toc = function(options) {
   var headings = $(opts.selectors, container);
   var headingOffsets = [];
   var activeClassName = opts.activeClass;
+  var bottomElem = opts.addBottomPadding;
 
   var scrollTo = function(e, callback) {
+    if (bottomElem) {
+    }
     if (opts.smoothScrolling && typeof opts.smoothScrolling === 'function') {
       e.preventDefault();
       var elScrollTo = $(e.target).attr('href');
 
       opts.smoothScrolling(elScrollTo, opts, callback);
     }
+
+    /*
+    //console.log($('#last').offset().top);
+    var eTop = $('#last').offset().top; //get the offset top of the element
+    //console.log(eTop - $(window).scrollTop()); //position of the ele w.r.t window
+
+    $(window).scroll(function() { //when window is scrolled
+    //console.log(eTop  - $(window).scrollTop());
+    $('#last').css({'padding-bottom':eTop  - $(window).scrollTop()});
+    });
+    */
+
     $('li', self).removeClass(activeClassName);
     $(e.target).parent().addClass(activeClassName);
   };
@@ -155,6 +170,7 @@ jQuery.fn.toc.defaults = {
       callback();
     });
   },
+  addBottomPadding: null,
   scrollToOffset: 0,
   prefix: 'toc',
   activeClass: 'toc-active',

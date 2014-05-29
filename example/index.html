@@ -9,7 +9,6 @@
       #wrapper { 
         width: 980px;
         margin: 0 auto;
-        margin-bottom: 1000px;
       }
       .toc {
         background: #fefefe;
@@ -62,6 +61,7 @@
     <script src="../dist/toc.js"></script>
     <script>
       $('.toc').toc({
+        'addBottomPadding': $('#wrapper')
       });
     </script>
   </body>

@@ -65,14 +65,24 @@ $.fn.toc = function(options) {
   var headings = $(opts.selectors, container);
   var headingOffsets = [];
   var activeClassName = opts.activeClass;
+  var bottomElem = opts.addBottomPadding;
+  var lastItem;
 
   var scrollTo = function(e, callback) {
+    if (bottomElem) {
+      var bottomElemHeight = $(document).height() - $(lastItem).position().top;
+      var windowHeight = $(window).height();
+      if(windowHeight - bottomElemHeight > 0) {
+        bottomElem.css({'padding-bottom': windowHeight - bottomElemHeight});
+      }
+    }
     if (opts.smoothScrolling && typeof opts.smoothScrolling === 'function') {
       e.preventDefault();
       var elScrollTo = $(e.target).attr('href');
 
       opts.smoothScrolling(elScrollTo, opts, callback);
     }
+
     $('li', self).removeClass(activeClassName);
     $(e.target).parent().addClass(activeClassName);
   };
@@ -109,11 +119,15 @@ $.fn.toc = function(options) {
     //build TOC
     var el = $(this);
     var ul = $(opts.listType);
+    var itemCount = headings.length;
 
     headings.each(function(i, heading) {
       var $h = $(heading);
       headingOffsets.push($h.offset().top - opts.highlightOffset);
 
+      if (i == itemCount - 1) {
+        lastItem = heading;
+      }
       var anchorName = opts.anchorName(i, heading, opts.prefix);
 
       //add anchor
@@ -155,6 +169,7 @@ jQuery.fn.toc.defaults = {
       callback();
     });
   },
+  addBottomPadding: null,
   scrollToOffset: 0,
   prefix: 'toc',
   activeClass: 'toc-active',

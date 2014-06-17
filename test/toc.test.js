@@ -89,6 +89,20 @@ suite('toc', function() {
       }, 410);
     });
 
+    test('should add padding to a given element so it can be at the top', function (done) {
+      $('.toc').toc({
+        container: '#fixture',
+        addBottomPadding: '#second_wrapper'
+      });
+
+      $('.toc a:last').click();
+
+      setTimeout(function () {
+        assert.ok($('#second_wrapper').attr('style').indexOf('padding-bottom') !== -1);
+        done();
+      }, 50);
+    });
+
     test('should update on scroll', function(done) {
       assert.equal($(window).scrollTop(), 0);
 

@@ -119,6 +119,14 @@ suite('toc', function() {
         done();
       }, 110);
     });
+
+    test('should pick data-toc-title if that\'s available on the heading as the anchor text', function () {
+      var $toc = $('.toc');
+
+      $toc.toc({ container: '#fixture' });
+
+      assert.equal($toc.find('a:last').text(), $('#fixture h3').data('toc-title'));
+    });
   });
 
   suite('existing ids', function() {

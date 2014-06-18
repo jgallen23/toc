@@ -33,6 +33,7 @@ Defaults shown below
 		'onHighlight': function(el) {}, //called when a new section is highlighted 
 		'highlightOnScroll': true, //add class to heading that is currently in focus
 		'highlightOffset': 100, //offset to trigger the next headline
+		'addBottomPadding': false, //can receive a selector to which it will add padding in case the navigated element is out of view
 		'anchorName': function(i, heading, prefix) { //custom function for anchor name
 			return prefix+i;
 		},

@@ -79,8 +79,8 @@ suite('toc', function() {
         }
       });
 
-      var $tocElement = $('.toc-h2:first a');
-      assert.equal($tocElement.html(), '<div><p>Sub Heading</p></div>');
+      var content = $('.toc-h2:first a').html();
+      assert.equal(content.indexOf('div') > -1, true);
 
     });
 

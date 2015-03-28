@@ -70,6 +70,20 @@ suite('toc', function() {
       assert.notEqual($('.toc ul a').length, 0);
     });
 
+    test('should use content templates for links', function() {
+
+      $('.toc').toc({
+        container: '#fixture',
+        templates: {
+          h2: _.template($('#toc-h2-template').html())
+        }
+      });
+
+      var content = $('.toc-h2:first a').html();
+      assert.equal(content.indexOf('div') > -1, true);
+
+    });
+
     // This test is a bit weird, two different results happen depending on where test is run.
     test('should scroll to element on click', function(done) {
       assert.equal($(window).scrollTop(), 0);

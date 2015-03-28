@@ -12,7 +12,8 @@
   },
   "devDependencies": {
     "assert": "*",
-    "blanket": "*"
+    "blanket": "*",
+    "underscore": "*"
   },
   "ignore": [
     "test",

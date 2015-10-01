@@ -118,7 +118,7 @@ $.fn.toc = function(options) {
 
       //add anchor
       if(heading.id !== anchorName) {
-        var anchor = $('<span/>').attr('id', anchorName).insertBefore($h);
+        var anchor = $('<a/>').attr('name', anchorName).insertBefore($h);
       }
 
       //build TOC item

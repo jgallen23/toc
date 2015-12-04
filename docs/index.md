@@ -33,6 +33,7 @@ Defaults shown below
 		'onHighlight': function(el) {}, //called when a new section is highlighted 
 		'highlightOnScroll': true, //add class to heading that is currently in focus
 		'highlightOffset': 100, //offset to trigger the next headline
+		'scrollToOffset': 0, // offset to determine how far away from the anchor scolling stops
 		'anchorName': function(i, heading, prefix) { //custom function for anchor name
 			return prefix+i;
 		},

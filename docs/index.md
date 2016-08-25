@@ -34,13 +34,13 @@ Defaults shown below
 		'highlightOnScroll': true, //add class to heading that is currently in focus
 		'highlightOffset': 100, //offset to trigger the next headline
 		'anchorName': function(i, heading, prefix) { //custom function for anchor name
-			return prefix+i;
+			return prefix + i;
 		},
 		'headerText': function(i, heading, $heading) { //custom function building the header-item text
 			return $heading.data('toc-title') || $heading.text();
 		},
 		'itemClass': function(i, heading, $heading, prefix) { // custom function for item class
-			return $heading[0].tagName.toLowerCase();
+			return prefix + '-' + $heading[0].tagName.toLowerCase();
 		}
 	});
 

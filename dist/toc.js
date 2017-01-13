@@ -2,7 +2,7 @@
  * toc - jQuery Table of Contents Plugin
  * v0.3.2
  * http://projects.jga.me/toc/
- * copyright Greg Allen 2014
+ * copyright Greg Allen 2017
  * MIT License
 */
 /*!
@@ -181,7 +181,7 @@ jQuery.fn.toc.defaults = {
     return prefix + '-' + candidateId;
   },
   headerText: function(i, heading, $heading) {
-    return $heading.text();
+    return $heading.data('toc-title') || $heading.text();
   },
   itemClass: function(i, heading, $heading, prefix) {
     return prefix + '-' + $heading[0].tagName.toLowerCase();

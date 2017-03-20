@@ -1,8 +1,0 @@
-options:
-  banner: '<%= meta.banner %>'
-lib:
-  src: 'dist/<%= name %>.bower.js'
-  dest: 'dist/<%= name %>.bower.min.js'
-full:
-  src: 'dist/<%= name %>.js'
-  dest: 'dist/<%= name %>.min.js'

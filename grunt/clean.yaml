@@ -1,4 +1,0 @@
-bower:
-  - 'dist/_bower.js'
-dist:
-  - 'dist'

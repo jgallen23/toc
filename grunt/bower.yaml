@@ -1,4 +1,0 @@
-main:
-  dest: 'dist/_bower.js'
-  exclude:
-    - 'jquery'

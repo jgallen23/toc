@@ -2,7 +2,7 @@
  * toc - jQuery Table of Contents Plugin
  * v0.3.2
  * http://projects.jga.me/toc/
- * copyright Greg Allen 2014
+ * copyright Greg Allen 2017
  * MIT License
 */
 (function($) {
@@ -36,7 +36,7 @@ $.fn.toc = function(options) {
     timeout = setTimeout(function() {
       var top = $(window).scrollTop(),
         highlighted, closest = Number.MAX_VALUE, index = 0;
-      
+
       for (var i = 0, c = headingOffsets.length; i < c; i++) {
         var currentClosest = Math.abs(headingOffsets[i] - top);
         if (currentClosest < closest) {
@@ -44,16 +44,19 @@ $.fn.toc = function(options) {
           closest = currentClosest;
         }
       }
-      
+
       $('li', self).removeClass(activeClassName);
       highlighted = $('li:eq('+ index +')', self).addClass(activeClassName);
-      opts.onHighlight(highlighted);      
+      opts.onHighlight(highlighted);
     }, 50);
   };
   if (opts.highlightOnScroll) {
     $(window).bind('scroll', highlightOnScroll);
     highlightOnScroll();
   }
+
+  //a stack for nesting TOC list items
+  var parents = [];
 
   return this.each(function() {
     //build TOC
@@ -87,7 +90,25 @@ $.fn.toc = function(options) {
         .addClass(opts.itemClass(i, heading, $h, opts.prefix))
         .append(a);
 
-      ul.append(li);
+      var isAppended, parent;
+
+      //nest TOC inside ul variable
+      do {
+        isAppended = true;
+        if (!parents.length) {
+          parents.push({ nodeName: heading.nodeName, li: li });
+          ul.append(li);
+        } else {
+          parent = parents[parents.length - 1];
+          if (parent.nodeName < heading.nodeName) {
+            ul.find(parent.li).append( $('<ul/>').append(li) );
+            parents.push({ nodeName: heading.nodeName, li: li });
+          } else {
+            parents.pop();
+            isAppended = false;
+          }
+        }
+      } while (!isAppended);
     });
     el.html(ul);
   });
@@ -119,19 +140,19 @@ jQuery.fn.toc.defaults = {
     var candidateId = $(heading).text().replace(/[^a-z0-9]/ig, ' ').replace(/\s+/g, '-').toLowerCase();
     if (verboseIdCache[candidateId]) {
       var j = 2;
-      
+
       while(verboseIdCache[candidateId + j]) {
         j++;
       }
       candidateId = candidateId + '-' + j;
-      
+
     }
     verboseIdCache[candidateId] = true;
 
     return prefix + '-' + candidateId;
   },
   headerText: function(i, heading, $heading) {
-    return $heading.text();
+    return $heading.data('toc-title') || $heading.text();
   },
   itemClass: function(i, heading, $heading, prefix) {
     return prefix + '-' + $heading[0].tagName.toLowerCase();

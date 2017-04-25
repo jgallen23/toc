@@ -22,16 +22,16 @@ suite('toc', function() {
     });
 
     test('plugin should bind to element', function() {
-      assert.equal($('.toc ul').length, 0);
+      assert.equal($('.toc > ul').length, 0);
 
       $('.toc').toc({
         container: '#fixture'
       });
 
-      assert.equal($('.toc ul').length, 1);
+      assert.equal($('.toc > ul').length, 1);
     });
   });
-  
+
   suite('anchor id formatting', function() {
     test('should verbose ids by default', function() {
       assert.equal($('.toc ul a').length, 0);
@@ -44,10 +44,10 @@ suite('toc', function() {
       assert.equal($('#fixture').find('h2').eq(1).prev().attr('id'), 'toc-sub-heading-2');
     });
 
-   
+
     test('should be able to use custom id generator', function() {
       assert.equal($(window).scrollTop(), 0);
-      
+
       $('.toc').toc({
         container: '#fixture',
         anchorName: function (i, heading, prefix) {
@@ -97,7 +97,7 @@ suite('toc', function() {
       });
 
       $(window).scrollTop(~~($('#toc-page-title-2').offset().top + 100));
-      
+
       setTimeout(function(){
         assert.ok($('.toc ul li:eq(1)').hasClass('toc-active'));
         done();

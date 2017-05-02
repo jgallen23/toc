@@ -1,10 +1,14 @@
 {
-  "name": "toc",
+  "name": "@firstandthird/toc",
   "version": "1.0.0",
-  "description": "",
+  "description": "Table Of Content Library",
   "main": "dist/toc.js",
   "module": "index.js",
-  "keywords": [],
+  "keywords": [
+    "toc",
+    "table",
+    "content"
+  ],
   "scripts": {
     "start": "scriptkit",
     "build": "scriptkit build",

@@ -1,146 +1,77 @@
-suite('toc', function() {
+import toc from '../index';
+import test from 'tape-rollup';
 
-  setup(function() {
-    $('.toc').empty();
+const init = () => {
+  const container = document.createElement('div');
+  container.id = 'fixture';
+  document.body.appendChild(container);
+};
 
-    var id = window.setTimeout(function() {}, 0);
+const setup = () => {
+  const container = document.getElementById('fixture');
+  container.innerHTML = `
+    <div id="wrapper">
+      <div class="toc" data-toc="h1, h2, h3"></div>
+    </div>
+    <div id="content_wrapper">
+      <h1>Page Title</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fermentum ligula a augue sollicitudin a tincidunt felis tincidunt. Donec et urna augue, sed consectetur lacus. Maecenas tincidunt volutpat lorem. Suspendisse turpis tellus, sodales ac commodo id, rhoncus vel augue. Vestibulum nisl nibh, rutrum eu bibendum vitae, bibendum et libero. Suspendisse vel odio vitae leo commodo lacinia. Sed non lacinia nulla. Pellentesque faucibus euismod dictum. Suspendisse potenti.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fermentum ligula a augue sollicitudin a tincidunt felis tincidunt. Donec et urna augue, sed consectetur lacus. Maecenas tincidunt volutpat lorem. Suspendisse turpis tellus, sodales ac commodo id, rhoncus vel augue. Vestibulum nisl nibh, rutrum eu bibendum vitae, bibendum et libero. Suspendisse vel odio vitae leo commodo lacinia. Sed non lacinia nulla. Pellentesque faucibus euismod dictum. Suspendisse potenti.</p>
+      <h2>Sub Heading</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fermentum ligula a augue sollicitudin a tincidunt felis tincidunt. Donec et urna augue, sed consectetur lacus. Maecenas tincidunt volutpat lorem. Suspendisse turpis tellus, sodales ac commodo id, rhoncus vel augue. Vestibulum nisl nibh, rutrum eu bibendum vitae, bibendum et libero. Suspendisse vel odio vitae leo commodo lacinia. Sed non lacinia nulla. Pellentesque faucibus euismod dictum. Suspendisse potenti.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fermentum ligula a augue sollicitudin a tincidunt felis tincidunt. Donec et urna augue, sed consectetur lacus. Maecenas tincidunt volutpat lorem. Suspendisse turpis tellus, sodales ac commodo id, rhoncus vel augue. Vestibulum nisl nibh, rutrum eu bibendum vitae, bibendum et libero. Suspendisse vel odio vitae leo commodo lacinia. Sed non lacinia nulla. Pellentesque faucibus euismod dictum. Suspendisse potenti.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fermentum ligula a augue sollicitudin a tincidunt felis tincidunt. Donec et urna augue, sed consectetur lacus. Maecenas tincidunt volutpat lorem. Suspendisse turpis tellus, sodales ac commodo id, rhoncus vel augue. Vestibulum nisl nibh, rutrum eu bibendum vitae, bibendum et libero. Suspendisse vel odio vitae leo commodo lacinia. Sed non lacinia nulla. Pellentesque faucibus euismod dictum. Suspendisse potenti.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fermentum ligula a augue sollicitudin a tincidunt felis tincidunt. Donec et urna augue, sed consectetur lacus. Maecenas tincidunt volutpat lorem. Suspendisse turpis tellus, sodales ac commodo id, rhoncus vel augue. Vestibulum nisl nibh, rutrum eu bibendum vitae, bibendum et libero. Suspendisse vel odio vitae leo commodo lacinia. Sed non lacinia nulla. Pellentesque faucibus euismod dictum. Suspendisse potenti.</p>
+      <h2>Sub Heading</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fermentum ligula a augue sollicitudin a tincidunt felis tincidunt. Donec et urna augue, sed consectetur lacus. Maecenas tincidunt volutpat lorem. Suspendisse turpis tellus, sodales ac commodo id, rhoncus vel augue. Vestibulum nisl nibh, rutrum eu bibendum vitae, bibendum et libero. Suspendisse vel odio vitae leo commodo lacinia. Sed non lacinia nulla. Pellentesque faucibus euismod dictum. Suspendisse potenti.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fermentum ligula a augue sollicitudin a tincidunt felis tincidunt. Donec et urna augue, sed consectetur lacus. Maecenas tincidunt volutpat lorem. Suspendisse turpis tellus, sodales ac commodo id, rhoncus vel augue. Vestibulum nisl nibh, rutrum eu bibendum vitae, bibendum et libero. Suspendisse vel odio vitae leo commodo lacinia. Sed non lacinia nulla. Pellentesque faucibus euismod dictum. Suspendisse potenti.</p>
+      <h3 id="last" data-toc-title="Custom subsub-heading">SubSub Heading</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fermentum ligula a augue sollicitudin a tincidunt felis tincidunt. Donec et urna augue, sed consectetur lacus. Maecenas tincidunt volutpat lorem. Suspendisse turpis tellus, sodales ac commodo id, rhoncus vel augue. Vestibulum nisl nibh, rutrum eu bibendum vitae, bibendum et libero. Suspendisse vel odio vitae leo commodo lacinia. Sed non lacinia nulla. Pellentesque faucibus euismod dictum. Suspendisse potenti.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fermentum ligula a augue sollicitudin a tincidunt felis tincidunt. Donec et urna augue, sed consectetur lacus. Maecenas tincidunt volutpat lorem. Suspendisse turpis tellus, sodales ac commodo id, rhoncus vel augue. Vestibulum nisl nibh, rutrum eu bibendum vitae, bibendum et libero. Suspendisse vel odio vitae leo commodo lacinia. Sed non lacinia nulla. Pellentesque faucibus euismod dictum. Suspendisse potenti.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fermentum ligula a augue sollicitudin a tincidunt felis tincidunt. Donec et urna augue, sed consectetur lacus. Maecenas tincidunt volutpat lorem. Suspendisse turpis tellus, sodales ac commodo id, rhoncus vel augue. Vestibulum nisl nibh, rutrum eu bibendum vitae, bibendum et libero. Suspendisse vel odio vitae leo commodo lacinia. Sed non lacinia nulla. Pellentesque faucibus euismod dictum. Suspendisse potenti.</p>
+    </div>
+  `;
 
-    while (id--) {
-      window.clearTimeout(id);
-    }
+  toc(container.querySelector('[data-toc]'));
 
-    $(window).unbind('scroll');
+  return container;
+};
 
-    $(window).scrollTop(0);
+init();
 
-    $('span[id^="toc"]').remove();
-  });
+test('toc', assert => {
+  const container = setup();
+  assert.equal(typeof toc, 'function', 'toc function');
+  assert.equal(container.querySelectorAll('ul').length, 1, 'list created');
+  assert.end();
+});
 
-  suite('jquery', function() {
-    test('should have toc method', function() {
-      assert.equal(typeof $.fn.toc, 'function');
-    });
+test('anchor formatting', assert => {
+  const container = setup();
 
-    test('plugin should bind to element', function() {
-      assert.equal($('.toc ul').length, 0);
+  assert.equal(container.querySelector('h1').id, 'toc-1');
+  assert.equal(container.querySelector('h2').id, 'toc-2');
+  assert.equal(container.querySelector('h3').id, 'last', 'respects existing id');
+  assert.end();
+});
 
-      $('.toc').toc({
-        container: '#fixture'
-      });
+test('links', assert => {
+  const container = setup();
 
-      assert.equal($('.toc ul').length, 1);
-    });
-  });
-  
-  suite('anchor id formatting', function() {
-    test('should verbose ids by default', function() {
-      assert.equal($('.toc ul a').length, 0);
+  assert.equal(container.querySelectorAll('a').length, 4, 'should have links');
+  assert.equal(container.querySelectorAll('a')[3].textContent, container.querySelector('h3').dataset.tocTitle, 'should use data-toc-title if available');
+  assert.equal(container.querySelectorAll('a')[0].textContent, container.querySelector('h1').textContent, 'should use text otherwise');
+  assert.end();
+});
 
-      $('.toc').toc({
-        container: '#fixture'
-      });
+test('navigation', assert => {
+  const container = setup();
 
-      assert.equal($('#fixture').find('h1').prev().attr('id'), 'toc-page-title-2');
-      assert.equal($('#fixture').find('h2').eq(1).prev().attr('id'), 'toc-sub-heading-2');
-    });
-
-   
-    test('should be able to use custom id generator', function() {
-      assert.equal($(window).scrollTop(), 0);
-      
-      $('.toc').toc({
-        container: '#fixture',
-        anchorName: function (i, heading, prefix) {
-          return i + prefix;
-        }
-      });
-
-      assert.equal($('h1').prev().attr('id'), '0toc');
-    });
-  });
-
-  suite('toc navigation', function() {
-    test('should contain links', function() {
-      assert.equal($('.toc ul a').length, 0);
-
-      $('.toc').toc({
-        container: '#fixture'
-      });
-
-      assert.notEqual($('.toc ul a').length, 0);
-    });
-
-    // This test is a bit weird, two different results happen depending on where test is run.
-    test('should scroll to element on click', function(done) {
-      assert.equal($(window).scrollTop(), 0);
-
-      $('.toc').toc({
-        container: '#fixture'
-      });
-
-      $('.toc a:first').click();
-
-      setTimeout(function(){
-        var elOffset = $('#toc-page-title-2').offset().top;
-        var windowTop = $(window).scrollTop();
-        assert.equal(405, elOffset);
-        // assert.ok((windowTop <= elOffset + 5 && windowTop >= elOffset - 5));
-        done();
-      }, 410);
-    });
-
-    test('should update on scroll', function(done) {
-      assert.equal($(window).scrollTop(), 0);
-
-      $('.toc').toc({
-        container: '#fixture'
-      });
-
-      $(window).scrollTop(~~($('#toc-page-title-2').offset().top + 100));
-      
-      setTimeout(function(){
-        assert.ok($('.toc ul li:eq(1)').hasClass('toc-active'));
-        done();
-      }, 110);
-    });
-
-    test('custom active class', function(done) {
-      assert.equal($(window).scrollTop(), 0);
-
-      $('.toc').toc({
-        container: '#fixture',
-        activeClass: 'active'
-      });
-
-      $(window).scrollTop(~~($('#toc-page-title-2').offset().top));
-
-      setTimeout(function(){
-        assert.ok($('.toc .active').length, 1);
-        done();
-      }, 110);
-    });
-
-    test('should pick data-toc-title if that\'s available on the heading as the anchor text', function () {
-      var $toc = $('.toc');
-
-      $toc.toc({ container: '#fixture' });
-
-      assert.equal($toc.find('a:last').text(), $('#fixture h3').data('toc-title'));
-    });
-  });
-
-  suite('existing ids', function() {
-    test('should use existing id', function() {
-      assert.equal($(window).scrollTop(), 0);
-
-      $('.toc').toc({
-        container: '#fixture',
-        smoothScrolling: true
-      });
-
-      var lastA = $('.toc a:last');
-
-      assert.equal(lastA.attr('href'), '#last');
-    });
-  });
+  document.body.scrollTop = document.documentElement.scrollTop = 0;
+  container.querySelectorAll('a')[3].click();
+  setTimeout(() => {
+    const scroll = document.body.scrollTop || document.documentElement.scrollTop;
+    assert.equal(scroll, container.querySelector('h3').offsetTop, 'should set scroll to top of the element');
+    assert.end();
+  }, 1001);
 });

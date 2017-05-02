@@ -6,7 +6,7 @@
       body {
         font-family: Helvetica, Arial;
       }
-      #wrapper { 
+      #wrapper {
         width: 980px;
         margin: 0 auto;
         margin-bottom: 1000px;
@@ -21,13 +21,13 @@
       .toc a {
         color: #333;
       }
-      .toc .tocH2 {
+      .toc .toc-h2 {
         margin-left: 10px
       }
-      .toc .tocH3 {
+      .toc .toc-h3 {
         margin-left: 20px
       }
-      .toc-active {
+      .toc-visible {
         color: #000;
         font-weight: bold;
       }
@@ -37,7 +37,7 @@
     </style>
   </head>
   <body>
-    <div class="toc">
+    <div class="toc" data-toc="h1, h2, h3">
     </div>
     <!--<div class="toc right">-->
     <!--</div>-->
@@ -58,11 +58,6 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fermentum ligula a augue sollicitudin a tincidunt felis tincidunt. Donec et urna augue, sed consectetur lacus. Maecenas tincidunt volutpat lorem. Suspendisse turpis tellus, sodales ac commodo id, rhoncus vel augue. Vestibulum nisl nibh, rutrum eu bibendum vitae, bibendum et libero. Suspendisse vel odio vitae leo commodo lacinia. Sed non lacinia nulla. Pellentesque faucibus euismod dictum. Suspendisse potenti.</p>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fermentum ligula a augue sollicitudin a tincidunt felis tincidunt. Donec et urna augue, sed consectetur lacus. Maecenas tincidunt volutpat lorem. Suspendisse turpis tellus, sodales ac commodo id, rhoncus vel augue. Vestibulum nisl nibh, rutrum eu bibendum vitae, bibendum et libero. Suspendisse vel odio vitae leo commodo lacinia. Sed non lacinia nulla. Pellentesque faucibus euismod dictum. Suspendisse potenti.</p>
     </div>
-    <script src="../bower_components/jquery/dist/jquery.js"></script>
     <script src="../dist/toc.js"></script>
-    <script>
-      $('.toc').toc({
-      });
-    </script>
   </body>
 </html>

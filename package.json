@@ -1,28 +1,62 @@
 {
-  "name": "toc",
-  "version": "0.0.0",
-  "private": true,
-  "devDependencies": {
-    "grunt": "0.4.2",
-    "grunt-bytesize": "~0.1.0",
-    "grunt-concat-bower": "~0.3.0",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-concat": "~0.4.0",
-    "grunt-contrib-connect": "~0.7.1",
-    "grunt-contrib-jshint": "~0.10.0",
-    "grunt-contrib-uglify": "~0.4.0",
-    "grunt-contrib-watch": "~0.6.1",
-    "grunt-mocha": "~0.4.1",
-    "grunt-notify": "~0.2.13",
-    "grunt-shell": "~0.6.4",
-    "load-grunt-config":"~0.7.1",
-    "jshint-stylish": "~0.1.5",
-    "grunt-jscs-checker": "~0.4.1"
+  "name": "@firstandthird/toc",
+  "version": "1.0.0",
+  "description": "Table Of Content Library",
+  "main": "dist/toc.js",
+  "module": "index.js",
+  "keywords": [
+    "toc",
+    "table",
+    "content"
+  ],
+  "scripts": {
+    "start": "scriptkit",
+    "build": "scriptkit build",
+    "dev": "scriptkit dev",
+    "test": "cat test/toc.test.dist.js | tape-run --static . --browser phantomjs --render tap-spec",
+    "prepublish": "scriptkit"
   },
-  "meta": {
-    "ftInit": {
-      "version": "0.0.5",
-      "type": "browser"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jgallen23/toc.git"
+  },
+  "author": "First+Third",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jgallen23/toc/issues"
+  },
+  "homepage": "https://github.com/jgallen23/toc#readme",
+  "devDependencies": {
+    "eslint-config-firstandthird": "3.2.0",
+    "eslint-plugin-import": "2.2.0",
+    "phantomjs-prebuilt": "2.1.14",
+    "scriptkit": "0.2.0",
+    "tap-spec": "4.1.1",
+    "tape-rollup": "4.6.4",
+    "tape-run": "2.2.0"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true
+    },
+    "extends": "firstandthird"
+  },
+  "scriptkit": {
+    "files": {
+      "dist/toc.js": "index.js",
+      "test/toc.test.dist.js": "test/toc.test.js"
+    },
+    "scripts": {
+      "babel": {
+        "exclude": [
+          "node_modules/tape-rollup/*"
+        ]
+      }
     }
+  },
+  "dependencies": {
+    "domassist": "^1.7.2",
+    "scroll-triggers": "^3.1.0",
+    "smooth-scroller": "^1.0.1"
   }
 }

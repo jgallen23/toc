@@ -4,7 +4,9 @@ import smoothScroll from 'smooth-scroller';
 
 function init(el) {
   if (!el) {
-    el = findOne('[data-toc]');
+    el = find('[data-toc]');
+    el.forEach(el => init(el));
+    return;
   }
 
   if (!el) {

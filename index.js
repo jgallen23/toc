@@ -5,7 +5,7 @@ import smoothScroll from 'smooth-scroller';
 function init(el) {
   if (!el) {
     el = find('[data-toc]');
-    el.forEach(el => init(el));
+    el.forEach(e => init(e));
     return;
   }
 

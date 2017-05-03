@@ -47,6 +47,7 @@ function init(el) {
       el: `.toc-li-${j}`,
       start: `#${item.index}`,
       position: 'top',
+      positionEnd: 'top',
       className: 'toc-visible'
     };
     html += `\n<li class="toc-li-${j} ${item.className}"><a href="#${item.index}">${item.text}</a></li>`;

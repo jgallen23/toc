@@ -17,6 +17,7 @@ function init(el) {
     findOne(el.dataset.tocContainer) | document.body : document.body;
   const selectors = el.dataset.toc.split(',').map(s => s.trim());
   const tocItems = [];
+  const offset = el.dataset.tocOffset ? parseInt(el.dataset.tocOffset, 10) : 0;
   let i = 1;
 
   // Building dict
@@ -67,7 +68,7 @@ function init(el) {
 
   // Setting up scroll triggers and smooth scroll
   scrollTriggers(triggerOptions);
-  smoothScroll(find('a', el));
+  smoothScroll(find('a', el), offset);
 }
 
 export default init;

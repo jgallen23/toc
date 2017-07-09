@@ -30,6 +30,8 @@ Defaults shown below
 		'listType': '<ul/>', //use unordered list. If you need ordered one instead pass: '<ol/>'
 		'smoothScrolling': true, //enable or disable smooth scrolling on click
 		'prefix': 'toc', //prefix for anchor tags and class names
+		'backToTop': false, //add back to top link on heading
+		'backToTopLabel': 'Back to top', //label used for back to top link
 		'onHighlight': function(el) {}, //called when a new section is highlighted 
 		'highlightOnScroll': true, //add class to heading that is currently in focus
 		'highlightOffset': 100, //offset to trigger the next headline

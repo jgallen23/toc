@@ -170,7 +170,7 @@ jQuery.fn.toc.defaults = {
     if (verboseIdCache[candidateId]) {
       var j = 2;
       
-      while(verboseIdCache[candidateId + j]) {
+      while(verboseIdCache[candidateId + '-' + j]) {
         j++;
       }
       candidateId = candidateId + '-' + j;

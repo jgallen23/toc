@@ -17,7 +17,7 @@ function init(el) {
     findOne(el.dataset.tocContainer) | document.body : document.body;
   const selectors = el.dataset.toc.split(',').map(s => s.trim());
   const tocItems = [];
-  const offset = el.dataset.tocOffset ? parseInt(el.dataset.tocOffset, 10) : 0;
+  const offset = el.dataset.tocOffset ? parseInt(el.dataset.tocOffset, 10) : 1;
   let i = 1;
 
   // Building dict

@@ -1,4 +1,4 @@
-import { find, findOne, ready } from 'domassist';
+import { find, findOne, ready, on, fire } from 'domassist';
 import scrollTriggers from 'scroll-triggers';
 import smoothScroll from 'smooth-scroller';
 
@@ -17,7 +17,7 @@ function init(el) {
     findOne(el.dataset.tocContainer) | document.body : document.body;
   const selectors = el.dataset.toc.split(',').map(s => s.trim());
   const tocItems = [];
-  const offset = el.dataset.tocOffset ? parseInt(el.dataset.tocOffset, 10) : 0;
+  const offset = el.dataset.tocOffset ? parseInt(el.dataset.tocOffset, 10) : 1;
   let i = 1;
 
   // Building dict
@@ -65,10 +65,21 @@ function init(el) {
   html += '</ul>';
 
   el.innerHTML = html;
+  const tocs = find('li', el);
+  const anchors = find('a', el);
 
   // Setting up scroll triggers and smooth scroll
   scrollTriggers(triggerOptions);
-  smoothScroll(find('a', el), offset);
+  smoothScroll(anchors, offset);
+
+  // Pause scroll triggers while smoothscrolling
+  on(anchors, 'smoothscroll:start', () => {
+    fire(tocs, 'scrolltriggers:pause');
+  });
+
+  on(anchors, 'smoothscroll:end', () => {
+    fire(tocs, 'scrolltriggers:resume');
+  });
 }
 
 export default init;

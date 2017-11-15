@@ -70,7 +70,7 @@ test('navigation', assert => {
   document.body.scrollTop = document.documentElement.scrollTop = 0;
   container.querySelectorAll('a')[3].click();
   setTimeout(() => {
-    const scroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const scroll = (document.body.scrollTop || document.documentElement.scrollTop) - 1; // Account for the extra pixel we scroll
     assert.equal(scroll, container.querySelector('h3').offsetTop, 'should set scroll to top of the element');
     assert.end();
   }, 1001);

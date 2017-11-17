@@ -29,7 +29,8 @@ function init(el) {
       const index = item.id || `toc-${i++}`;
       const text = item.dataset.tocTitle ?
         item.dataset.tocTitle.trim() : item.textContent.trim();
-      const className = `toc-${selector}`;
+      const sanitizedClassName = selector.replace(/((:+[\w-\d]*)|[^A-z0-9-\s])/g, '').replace(/\s{2,}/g, '').trim();
+      const className = `toc-${sanitizedClassName}`;
 
       // Set it if none
       if (item.id !== index) {

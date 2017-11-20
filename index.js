@@ -28,8 +28,8 @@ function init(el) {
       // Keep the id if already there
       const index = item.id || `toc-${i++}`;
       const text = item.dataset.tocTitle ?
-        item.dataset.tocTitle.trim() : item.textContent.trim();
-      const sanitizedClassName = selector.replace(/((:+[\w-\d]*)|[^A-z0-9-\s])/g, '').replace(/\s{2,}/g, '').trim();
+      item.dataset.tocTitle.trim() : item.textContent.trim();
+      const sanitizedClassName = selector.replace(/((:+[\w-\d]*)|[^A-z0-9-\s])/g, ' ').replace(/\s{2,}/g, ' ').trim();
       const className = `toc-${sanitizedClassName}`;
 
       // Set it if none

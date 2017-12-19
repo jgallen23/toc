@@ -73,13 +73,27 @@ function init(el) {
   smoothScroll(anchors, offset);
 
   // Pause scroll triggers while smoothscrolling
-  on(anchors, 'smoothscroll:start', () => {
+  on(document.body, 'smoothscroll:start', () => {
     fire(tocs, 'scrolltriggers:pause');
   });
 
-  on(anchors, 'smoothscroll:end', () => {
+  on(document.body, 'smoothscroll:end', () => {
     fire(tocs, 'scrolltriggers:resume');
   });
+
+  if (window.location.hash) {
+    anchors.some(anchor => {
+      const found = anchor.getAttribute('href') === window.location.hash;
+
+      if (found) {
+        setTimeout(() => {
+          anchor.click();
+        });
+      }
+
+      return found;
+    });
+  }
 }
 
 export default init;

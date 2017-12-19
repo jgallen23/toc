@@ -73,11 +73,11 @@ function init(el) {
   smoothScroll(anchors, offset);
 
   // Pause scroll triggers while smoothscrolling
-  on(anchors, 'smoothscroll:start', () => {
+  on(document.body, 'smoothscroll:start', () => {
     fire(tocs, 'scrolltriggers:pause');
   });
 
-  on(anchors, 'smoothscroll:end', () => {
+  on(document.body, 'smoothscroll:end', () => {
     fire(tocs, 'scrolltriggers:resume');
   });
 }

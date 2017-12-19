@@ -1,6 +1,6 @@
 import { find, findOne, ready, on, fire } from 'domassist';
 import scrollTriggers from 'scroll-triggers';
-import smoothScroll from 'smooth-scroller';
+import { default as smoothScroll, scroll } from 'smooth-scroller';
 
 function init(el) {
   if (!el) {
@@ -79,6 +79,7 @@ function init(el) {
 
   on(document.body, 'smoothscroll:end', () => {
     fire(tocs, 'scrolltriggers:resume');
+    fire(window, 'scroll');
   });
 
   if (window.location.hash) {
@@ -87,7 +88,11 @@ function init(el) {
 
       if (found) {
         setTimeout(() => {
-          anchor.click();
+          const element = findOne(window.location.hash);
+          if (element) {
+            // Silent scroll to element
+            scroll(element, null, offset, true);
+          }
         });
       }
 

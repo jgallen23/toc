@@ -80,6 +80,20 @@ function init(el) {
   on(document.body, 'smoothscroll:end', () => {
     fire(tocs, 'scrolltriggers:resume');
   });
+
+  if (window.location.hash) {
+    anchors.some(anchor => {
+      const found = anchor.getAttribute('href') === window.location.hash;
+
+      if (found) {
+        setTimeout(() => {
+          anchor.click();
+        });
+      }
+
+      return found;
+    });
+  }
 }
 
 export default init;

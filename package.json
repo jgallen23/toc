@@ -1,6 +1,6 @@
 {
   "name": "@firstandthird/toc",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "Table Of Content Library",
   "main": "dist/toc.js",
   "module": "index.js",

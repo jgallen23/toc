@@ -1,6 +1,6 @@
 import { find, findOne, ready, on, fire } from 'domassist';
 import scrollTriggers from 'scroll-triggers';
-import smoothScroll from 'smooth-scroller';
+import { default as smoothScroll, scroll } from 'smooth-scroller';
 
 function init(el) {
   if (!el) {
@@ -28,8 +28,9 @@ function init(el) {
       // Keep the id if already there
       const index = item.id || `toc-${i++}`;
       const text = item.dataset.tocTitle ?
-        item.dataset.tocTitle.trim() : item.textContent.trim();
-      const className = `toc-${selector}`;
+      item.dataset.tocTitle.trim() : item.textContent.trim();
+      const sanitizedClassName = selector.replace(/((:+[\w-\d]*)|[^A-z0-9-\s])/g, ' ').replace(/\s{2,}/g, ' ').trim();
+      const className = `toc-${sanitizedClassName}`;
 
       // Set it if none
       if (item.id !== index) {
@@ -73,13 +74,32 @@ function init(el) {
   smoothScroll(anchors, offset);
 
   // Pause scroll triggers while smoothscrolling
-  on(anchors, 'smoothscroll:start', () => {
+  on(document.body, 'smoothscroll:start', () => {
     fire(tocs, 'scrolltriggers:pause');
   });
 
-  on(anchors, 'smoothscroll:end', () => {
+  on(document.body, 'smoothscroll:end', () => {
     fire(tocs, 'scrolltriggers:resume');
+    fire(window, 'scroll');
   });
+
+  if (window.location.hash) {
+    anchors.some(anchor => {
+      const found = anchor.getAttribute('href') === window.location.hash;
+
+      if (found) {
+        setTimeout(() => {
+          const element = findOne(window.location.hash);
+          if (element) {
+            // Silent scroll to element
+            scroll(element, null, offset, true);
+          }
+        });
+      }
+
+      return found;
+    });
+  }
 }
 
 export default init;

@@ -1,6 +1,6 @@
 {
   "name": "@firstandthird/toc",
-  "version": "1.1.0",
+  "version": "1.2.1",
   "description": "Table Of Content Library",
   "main": "dist/toc.js",
   "module": "index.js",
@@ -27,13 +27,13 @@
   },
   "homepage": "https://github.com/jgallen23/toc#readme",
   "devDependencies": {
-    "eslint-config-firstandthird": "3.2.0",
-    "eslint-plugin-import": "2.2.0",
-    "phantomjs-prebuilt": "2.1.14",
-    "scriptkit": "0.2.0",
+    "eslint-config-firstandthird": "4.0.1",
+    "eslint-plugin-import": "2.8.0",
+    "phantomjs-prebuilt": "2.1.16",
+    "scriptkit": "0.3.0",
     "tap-spec": "4.1.1",
     "tape-rollup": "4.6.4",
-    "tape-run": "2.2.0"
+    "tape-run": "3.0.0"
   },
   "eslintConfig": {
     "env": {

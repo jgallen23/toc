@@ -49,6 +49,7 @@ function init(el) {
     const nextEl = tocItems[j + 1];
     const options = {
       el: `.toc-li-${j}`,
+      fixed: 'true',
       start: `#${item.index}`,
       position: 'top',
       positionEnd: 'top',

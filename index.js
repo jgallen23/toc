@@ -15,7 +15,8 @@ function init(el) {
 
   const container = el.dataset.tocContainer ?
     findOne(el.dataset.tocContainer) | document.body : document.body;
-  const selectors = el.dataset.toc.split(',').map(s => s.trim());
+  // const selectors = el.dataset.toc.split(',').map(s => s.trim());
+  const selectors = [el.dataset.toc];
   const tocItems = [];
   const offset = el.dataset.tocOffset ? parseInt(el.dataset.tocOffset, 10) : 1;
   let i = 1;
@@ -29,8 +30,8 @@ function init(el) {
       const index = item.id || `toc-${i++}`;
       const text = item.dataset.tocTitle ?
       item.dataset.tocTitle.trim() : item.textContent.trim();
-      const sanitizedClassName = selector.replace(/((:+[\w-\d]*)|[^A-z0-9-\s])/g, ' ').replace(/\s{2,}/g, ' ').trim();
-      const className = `toc-${sanitizedClassName}`;
+      const name = item.tagName.toLowerCase();
+      const className = `toc-${name}`;
 
       // Set it if none
       if (item.id !== index) {

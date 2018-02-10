@@ -65,9 +65,11 @@ test('links', assert => {
   assert.equal(container.querySelectorAll('a').length, 5, 'should have links');
   assert.equal(container.querySelectorAll('a')[3].textContent, container.querySelector('h3').dataset.tocTitle, 'should use data-toc-title if available');
   assert.equal(container.querySelectorAll('a')[0].textContent, container.querySelector('h1').textContent, 'should use text otherwise');
-  assert.ok(container.querySelectorAll('li')[0].classList.contains('page-title'), 'should have "page-title" class');
-  assert.ok(container.querySelectorAll('li')[3].classList.contains('toc-last'), 'should have "toc-last" class');
-  assert.ok(container.querySelectorAll('li')[4].classList.contains('toc-last-heading'), 'should have "toc-last-heading" class');
+  assert.ok(container.querySelectorAll('li')[0].classList.contains('toc-h1'), 'should have "toc-h1" class');
+  assert.ok(container.querySelectorAll('li')[3].classList.contains('toc-h3'), 'should have "toc-h3" class');
+  // assert.ok(container.querySelectorAll('li')[0].classList.contains('page-title'), 'should have "page-title" class');
+  // assert.ok(container.querySelectorAll('li')[3].classList.contains('toc-last'), 'should have "toc-last" class');
+  // assert.ok(container.querySelectorAll('li')[4].classList.contains('toc-last-heading'), 'should have "toc-last-heading" class');
   assert.end();
 });
 

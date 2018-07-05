@@ -14,7 +14,7 @@ function init(el) {
   }
 
   const container = el.dataset.tocContainer ?
-    findOne(el.dataset.tocContainer) | document.body : document.body;
+    findOne(el.dataset.tocContainer) || document.body : document.body;
   const selectors = el.dataset.toc.split(',').map(s => s.trim());
   const tocItems = [];
   const offset = el.dataset.tocOffset ? parseInt(el.dataset.tocOffset, 10) : 1;

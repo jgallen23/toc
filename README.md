@@ -37,10 +37,10 @@ Options are set via custom properties:
 
 | Property | Value | Description |
 |---|---|---|
-| `data-toc` | {string\|Element\|NodeList} | Elements to use as headings |
-| `data-toc-container` | {string\|Element\|NodeList} | Element to find all selectors in |
-| `data-toc-offset` | {string\|Element\|NodeList} | Offset to trigger the next headline |
-| `data-toc-title` | {string} | Text to be used as title (add this to headings) |
+| `data-toc` | *{string\|Element\|NodeList}* | Elements to use as headings |
+| `data-toc-container` | *{string\|Element\|NodeList}* | Element to find all selectors in |
+| `data-toc-offset` | *{string\|Element\|NodeList}* | Offset to trigger the next headline |
+| `data-toc-title` | *{string}* | Text to be used as title (add this to headings) |
 
 ## Example
 
@@ -57,7 +57,7 @@ Example HTML:
     <div class="toc" data-toc="h1, h2, h3"></div>
 
     <div id="wrapper">
-      <h1>Page Title</h1>
+      <h1 data-toc-title="Custom toc title">Page Title</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fermentum ligula a augue sollicitudin a tincidunt felis tincidunt. Donec et urna augue, sed consectetur lacus. Maecenas tincidunt volutpat lorem. Suspendisse turpis tellus, sodales ac commodo id, rhoncus vel augue. Vestibulum nisl nibh, rutrum eu bibendum vitae, bibendum et libero. Suspendisse vel odio vitae leo commodo lacinia. Sed non lacinia nulla. Pellentesque faucibus euismod dictum. Suspendisse potenti.</p>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fermentum ligula a augue sollicitudin a tincidunt felis tincidunt. Donec et urna augue, sed consectetur lacus. Maecenas tincidunt volutpat lorem. Suspendisse turpis tellus, sodales ac commodo id, rhoncus vel augue. Vestibulum nisl nibh, rutrum eu bibendum vitae, bibendum et libero. Suspendisse vel odio vitae leo commodo lacinia. Sed non lacinia nulla. Pellentesque faucibus euismod dictum. Suspendisse potenti.</p>
       <h2>Sub Heading</h2>
@@ -87,14 +87,6 @@ import '@firstandthird/toc';
 Example CSS:
 
 ```css
-body {
-    font-family: Helvetica, Arial;
-}
-#wrapper {
-    width: 980px;
-    margin: 0 auto;
-    margin-bottom: 1000px;
-}
 .toc {
     background: #fefefe;
     width: 200px;

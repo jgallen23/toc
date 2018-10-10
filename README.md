@@ -11,7 +11,9 @@ TOC is a library that will automatically generate a table of contents for your p
 
 ## Installation
 
-`npm install import '@firstandthird/toc'`
+```sh
+npm install import '@firstandthird/toc'
+```
 
 ## Usage
 
@@ -78,7 +80,7 @@ Example HTML:
 </html>
 ```
 
-Example scripts:
+Example JavaScript:
 
 ```javascript
 import '@firstandthird/toc';

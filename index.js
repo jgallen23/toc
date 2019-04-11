@@ -1,6 +1,6 @@
 import { find, findOne, ready, on, fire } from 'domassist';
 import scrollTriggers from 'scroll-triggers';
-import { default as smoothScroll, scroll } from 'smooth-scroller';
+import { init as smoothScroll, scroll } from 'smooth-scroller';
 
 function init(el) {
   if (!el) {

@@ -1,4 +1,4 @@
-# TOC
+# TOC ![npm](https://img.shields.io/npm/v/@firstandthird/toc.svg)
 
 TOC is a library that will automatically generate a table of contents for your page.
 

@@ -1,6 +1,6 @@
 {
   "name": "@firstandthird/toc",
-  "version": "1.4.1",
+  "version": "2.0.0",
   "description": "Table Of Content Library",
   "main": "index.js",
   "module": "dist/toc.esm.js",

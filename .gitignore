@@ -2,7 +2,6 @@ node_modules
 npm-debug.log
 .idea
 test/*.dist.*
+test/dist
 dist
-package-lock.json
-*.map
 .DS_Store

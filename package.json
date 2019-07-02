@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "description": "Table Of Content Library",
   "main": "index.js",
-  "module": "dist/toc.esm.js",
+  "module": "dist/toc.js",
   "keywords": [
     "toc",
     "table",
@@ -14,7 +14,7 @@
     "build": "scriptkit build",
     "dev": "scriptkit dev",
     "pretest": "scriptkit build",
-    "test": "cat test/toc.test.dist.js | tape-run --static . --browser phantomjs --render tap-spec",
+    "test": "cat test/toc.test.dist.bundle.js | tape-run --static . --browser phantomjs --render tap-spec",
     "prepublishOnly": "scriptkit"
   },
   "repository": {
@@ -28,13 +28,13 @@
   },
   "homepage": "https://github.com/jgallen23/toc#readme",
   "devDependencies": {
-    "eslint-config-firstandthird": "^4.3.0",
-    "eslint-plugin-import": "^2.16.0",
+    "eslint-config-firstandthird": "^4.4.0",
+    "eslint-plugin-import": "^2.18.0",
     "phantomjs-prebuilt": "^2.1.16",
-    "scriptkit": "^2.0.3",
+    "scriptkit": "^3.0.0",
     "tap-spec": "^5.0.0",
     "tape-rollup": "^4.6.4",
-    "tape-run": "^5.0.0"
+    "tape-run": "^6.0.0"
   },
   "eslintConfig": {
     "env": {
@@ -59,8 +59,8 @@
     }
   },
   "dependencies": {
-    "domassist": "^2.0.2",
-    "scroll-triggers": "^4.0.0",
-    "smooth-scroller": "^2.0.0"
+    "domassist": "^2.2.0",
+    "scroll-triggers": "^4.1.0",
+    "smooth-scroller": "^2.1.0"
   }
 }

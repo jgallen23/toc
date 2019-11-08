@@ -15,6 +15,18 @@ TOC is a library that will automatically generate a table of contents for your p
 npm install import '@firstandthird/toc'
 ```
 
+## Build locally
+
+Within this Git repository, you may build using:
+
+```sh
+npm install
+npm run build
+```
+
+The second command generates a `dist/toc.bundle.js` file that may be
+included in HTML pages using e.g. `<script src="toc.bundle.js"></script>`.
+
 ## Usage
 
 Import required scripts:
